@@ -271,24 +271,24 @@ export default function LandingPage() {
               <span className="text-[#00e38e]">
                 Conoce todas nuestras funcionalidades
               </span>{" "}
-              y<br className="hidden sm:block" /> beneficios
+              y<br className="hidden sm:block" /> beneficios {" "}
             </h2>
-            <div className="flex flex-col items-center justify-center gap-7 md:flex-row md:items-center">
+            <div className="flex flex-col items-center justify-center gap-7 md:flex-row md:items-stretch">
               {/* Card 1 - Manejo de usuarios */}
               <div
-                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-5 rounded-2xl border border-[#00e38e] bg-[#0a0a0a] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[503px]"
+                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] bg-[#0a0a0a] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[600px]"
                 style={{ boxShadow: "0 0 10px rgba(0, 227, 142, 0.05)" }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-[22px] font-semibold text-[#00e38e]">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <span className="text-[24px] font-semibold text-[#00e38e]">
                     Manejo de usuarios
                   </span>
-                  <span className="text-[14px] text-[#d9d9d9]">
+                  <span className="text-[15px] text-[#d9d9d9]">
                     Visualiza, agrega y elimina usuarios de la plataforma del
                     condominio.
                   </span>
                 </div>
-                <div className="flex w-full flex-col gap-4 text-left text-[15px] text-white">
+                <div className="flex flex-1 w-full flex-col justify-between gap-2 text-left text-[22px] text-white">
                   {[
                     { icon: Megaphone, text: "Alertas y emergencias" },
                     { icon: Key, text: "Gestión de accesos" },
@@ -310,9 +310,11 @@ export default function LandingPage() {
                       text: "Integración con sistemas de identificación",
                     },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <item.icon className="h-5 w-5 shrink-0 text-[#00e38e]" />
-                      <span className="text-[15px]">{item.text}</span>
+                    <div key={i} className="flex items-center gap-4">
+                      <item.icon className="h-6 w-6 shrink-0 text-[#00e38e]" />
+                      <span className="text-[22px] leading-relaxed">
+                        {item.text}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -320,23 +322,23 @@ export default function LandingPage() {
 
               {/* Card 2 - Administración de usuarios (Featured) */}
               <div
-                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-5 rounded-2xl border border-[#00e38e] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[563px]"
+                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[660px] relative -top-6"
                 style={{
                   background:
                     "linear-gradient(180deg, rgba(0, 227, 142, 0.08) 0%, rgba(0, 0, 0, 0) 100%)",
                   boxShadow: "0 0 20px rgba(0, 227, 142, 0.1)",
                 }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-[22px] font-semibold text-white">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <span className="text-[24px] font-semibold text-white">
                     Administración de usuarios
                   </span>
-                  <span className="text-[14px] text-[#d9d9d9]">
+                  <span className="text-[15px] text-[#d9d9d9]">
                     Gestiona la creación, modificación y eliminación de usuarios
                     en tu comunidad.
                   </span>
                 </div>
-                <div className="flex w-full flex-col gap-4 text-left text-[15px] text-white">
+                <div className="flex flex-1 w-full flex-col justify-between gap-2 text-left text-[22px] text-white">
                   {[
                     { icon: Clock, text: "Atención y soporte 24/7" },
                     {
@@ -356,9 +358,11 @@ export default function LandingPage() {
                     },
                     { icon: ShieldCheck, text: "Control de permisos y roles" },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <item.icon className="h-5 w-5 shrink-0 text-[#00e38e]" />
-                      <span className="text-[15px]">{item.text}</span>
+                    <div key={i} className="flex items-center gap-4">
+                      <item.icon className="h-6 w-6 shrink-0 text-[#00e38e]" />
+                      <span className="text-[22px] leading-relaxed">
+                        {item.text}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -366,19 +370,19 @@ export default function LandingPage() {
 
               {/* Card 3 - Control de usuarios */}
               <div
-                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-5 rounded-2xl border border-[#00e38e] bg-[#0a0a0a] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[503px]"
+                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] bg-[#0a0a0a] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[600px]"
                 style={{ boxShadow: "0 0 10px rgba(0, 227, 142, 0.05)" }}
               >
-                <div className="flex flex-col items-center gap-2">
-                  <span className="text-[22px] font-semibold text-[#00e38e]">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <span className="text-[24px] font-semibold text-[#00e38e]">
                     Control de usuarios
                   </span>
-                  <span className="text-[14px] text-[#d9d9d9]">
+                  <span className="text-[15px] text-[#d9d9d9]">
                     Administra, crea y elimina perfiles de usuarios en el
                     sistema.
                   </span>
                 </div>
-                <div className="flex w-full flex-col gap-4 text-left text-[15px] text-white">
+                <div className="flex flex-1 w-full flex-col justify-between gap-2 text-left text-[22px] text-white">
                   {[
                     { icon: MessageSquareText, text: "Chat interno" },
                     { icon: Calendar, text: "Gestión de reservas" },
@@ -388,9 +392,11 @@ export default function LandingPage() {
                     { icon: Upload, text: "Colaboración en tiempo real" },
                     { icon: Lock, text: "Seguridad y cifrado" },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <item.icon className="h-5 w-5 shrink-0 text-[#00e38e]" />
-                      <span className="text-[15px]">{item.text}</span>
+                    <div key={i} className="flex items-center gap-4">
+                      <item.icon className="h-6 w-6 shrink-0 text-[#00e38e]" />
+                      <span className="text-[22px] leading-relaxed">
+                        {item.text}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -433,17 +439,16 @@ export default function LandingPage() {
         </section>
 
         <section className="w-full max-w-[1440px] bg-[#191919] px-6 py-10 sm:px-10 sm:rounded-t-[40px]">
-          <div className="flex h-full flex-col gap-10 lg:h-[600px] lg:flex-row">
-            <div className="flex flex-1 items-end justify-center rounded-[28px] border border-[#00e38e] bg-[#0f2b22] p-7">
+          <div className="flex h-full flex-col justify-center gap-10 lg:h-[520px] lg:flex-row">
+            <div className="relative flex w-full lg:w-[520px] items-end justify-center rounded-[28px] border border-[#00e38e] bg-[#0f2b22] overflow-hidden">
               <Image
-                src="/images/mock/pdf-cover.svg"
-                alt="PDF"
-                width={420}
-                height={520}
-                className="object-contain"
+                src="/images/condominios/book.png"
+                alt="3 Plantillas de cobranza"
+                fill
+                className="object-cover"
               />
             </div>
-            <div className="flex flex-1 items-center justify-center rounded-[28px] border border-[#323232] bg-[#222222] p-7">
+            <div className="flex w-full lg:w-[720px] items-center justify-center rounded-[28px] border border-[#323232] bg-[#222222] p-7">
               <div className="flex flex-col items-center gap-7 text-center">
                 <div className="flex flex-col gap-4">
                   <span className="text-[28px] font-semibold leading-[1.2] sm:text-[40px]">
