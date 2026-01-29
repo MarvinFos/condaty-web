@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import {
   CircleDollarSign,
   Key,
@@ -30,57 +32,7 @@ import {
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <header className="sticky top-0 z-50 flex w-full justify-center bg-[#191919] border-b border-[#535353]">
-        <div className="flex w-full justify-between items-center px-8 md:px-16 lg:px-24 py-0.5">
-          <div className="flex h-[82px] grow items-center justify-center">
-            <div className="flex grow items-center justify-between">
-              <Image
-                src="/images/logo_condaty.png"
-                alt="Condaty"
-                width={200}
-                height={30}
-                className="h-[30px] w-[200px] object-contain"
-              />
-              <div className="hidden md:flex items-center justify-center gap-8">
-                <nav className="flex items-center gap-6">
-                  <div className="flex items-center justify-center gap-2 rounded-full bg-[#292929] p-2 cursor-pointer">
-                    <span className="text-base font-medium text-[#00e38e]">
-                      Inicio
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 rounded-full bg-[#292929] p-2 cursor-pointer">
-                    <span className="text-base font-medium text-white">
-                      Administración
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 rounded-full bg-[#292929] p-2 cursor-pointer">
-                    <span className="text-base font-medium text-white">
-                      Residentes
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2 rounded-full bg-[#292929] p-2 cursor-pointer">
-                    <span className="text-base font-medium text-white">
-                      Guardias
-                    </span>
-                  </div>
-                </nav>
-                <div className="flex items-center gap-3">
-                  <button className="flex h-12 flex-col items-center justify-center gap-2.5 rounded-[10px] border border-solid border-[#d9d9d9] bg-[#292929] px-6 py-3 hover:bg-[#333] transition-colors">
-                    <span className="text-center text-[16px] font-semibold text-white">
-                      Ingresar
-                    </span>
-                  </button>
-                  <button className="flex h-12 flex-col items-center justify-center gap-2.5 rounded-[10px] border border-solid border-[#00e38e] bg-[#00e38e] px-6 py-3 hover:bg-[#00c97e] transition-colors">
-                    <span className="text-center text-[16px] font-semibold text-[#191919]">
-                      Contáctanos
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
       <main className="flex flex-col items-center">
         <section className="relative w-full max-w-[1440px] overflow-hidden bg-[#191919] px-6 pb-20 pt-[200px] sm:px-10">
           <div className="relative z-10 flex flex-col items-center gap-8 text-center">
@@ -425,7 +377,7 @@ export default function LandingPage() {
             ].map((logo, index) => (
               <div
                 key={index}
-                className="relative h-[72px] w-[180px] flex-shrink-0"
+                className="relative h-[42px] w-[146px] flex-shrink-0"
               >
                 <Image
                   src={`/images/condominios/${logo}`}
@@ -508,72 +460,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <footer className="w-full max-w-[1440px] border-t border-[#535353] bg-[#191919] px-6 py-12 sm:px-10">
-          <div className="grid gap-12 md:grid-cols-3">
-            <div className="flex flex-col gap-2">
-              <span className="text-[14px] font-medium text-[#00e38e]">
-                Soporte
-              </span>
-              <span className="text-[16px] text-white">
-                Preguntas frecuentes
-              </span>
-              <span className="text-[16px] text-white">
-                Políticas de privacidad
-              </span>
-              <span className="text-[16px] text-white">Eliminar mi cuenta</span>
-              <span className="text-[16px] text-white">Contactar</span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-[14px] font-medium text-[#00e38e]">
-                Contactos
-              </span>
-              <span className="text-[16px] text-white">hola@condaty.com</span>
-              <span className="text-[16px] text-white">(+591) 75847564</span>
-            </div>
-            <div className="flex flex-col gap-4">
-              <span className="text-[14px] font-medium text-[#00e38e]">
-                Síguenos
-              </span>
-              <div className="flex gap-4">
-                <Image
-                  src="/images/redsocial/facebook.png"
-                  alt="Facebook"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/redsocial/insta.png"
-                  alt="Instagram"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/redsocial/linkedin.png"
-                  alt="LinkedIn"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/redsocial/youtube.png"
-                  alt="YouTube"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/redsocial/tiktok.png"
-                  alt="TikTok"
-                  width={24}
-                  height={24}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </main>
     </div>
   );
