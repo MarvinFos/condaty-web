@@ -26,6 +26,7 @@ export default function Navbar() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+        variant="contact"
       />
       <div className="flex w-full justify-between items-center px-6 md:px-10 lg:px-20 xl:px-36 py-2 md:py-1">
         <div className="flex h-[60px] md:h-[82px] grow items-center justify-between">

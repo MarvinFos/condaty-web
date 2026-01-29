@@ -1,6 +1,6 @@
 "use client";
 
-import { X, User, Mail, ChevronDown } from "lucide-react";
+import { X, User, Mail, ChevronDown, Phone, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
@@ -8,13 +8,20 @@ import Image from "next/image";
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  variant?: "contact" | "exit";
 }
 
-export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export default function ContactModal({
+  isOpen,
+  onClose,
+  variant = "contact",
+}: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: "",
+    phone: "",
     email: "",
     role: "",
+    city: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,6 +42,31 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     "Conserje/Mayordomo",
     "Desarrolladora Inmobiliaria",
   ];
+
+  const cities = [
+    "Beni",
+    "Chuquisaca",
+    "Cochabamba",
+    "La Paz",
+    "Oruro",
+    "Pando",
+    "Potosí",
+    "Santa Cruz",
+    "Tarija",
+  ];
+
+  const content = {
+    contact: {
+      title: "¡Contáctanos!",
+      description:
+        "Déjanos tus datos y nos pondremos en contacto contigo lo antes posible.",
+    },
+    exit: {
+      title: "¡Antes de que te vayas!",
+      description:
+        "Conoce cómo Condaty ayuda a la administración de comunidades, comités y copropietarios.",
+    },
+  };
 
   return (
     <AnimatePresence>
@@ -80,11 +112,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="relative z-10 flex flex-col gap-6 px-8 pb-8 pt-2">
               <div className="text-center">
                 <h2 className="text-[28px] font-semibold leading-tight text-white">
-                  ¡Antes de que te vayas!
+                  {content[variant].title}
                 </h2>
                 <p className="mt-2 text-[15px] text-gray-400">
-                  Conoce cómo Condaty ayuda a la administración de comunidades,
-                  comités y copropietarios.
+                  {content[variant].description}
                 </p>
               </div>
 
@@ -106,6 +137,28 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
+                {/* Teléfono */}
+                <div className="flex flex-col gap-2">
+                  <label className="ml-2 text-sm font-medium text-gray-300">
+                    Teléfono <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                      <Phone size={20} />
+                    </div>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Ej. 77712345"
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 py-3 pl-12 pr-4 text-white placeholder-gray-600 outline-none transition-all focus:border-[#00e38e]/50 focus:bg-white/10 focus:shadow-[0_0_20px_rgba(0,227,142,0.1)]"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
                       }
                     />
                   </div>
@@ -165,6 +218,43 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           className="bg-[#191919] text-white"
                         >
                           {role}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Ciudad */}
+                <div className="flex flex-col gap-2">
+                  <label className="ml-2 text-sm font-medium text-gray-300">
+                    Ciudad <span className="text-red-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                      <MapPin size={20} />
+                    </div>
+                    <select
+                      required
+                      className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 py-3 pl-12 pr-4 text-white outline-none transition-all focus:border-[#00e38e]/50 focus:bg-white/10 focus:shadow-[0_0_20px_rgba(0,227,142,0.1)]"
+                      value={formData.city}
+                      onChange={(e) =>
+                        setFormData({ ...formData, city: e.target.value })
+                      }
+                    >
+                      <option
+                        value=""
+                        disabled
+                        className="bg-[#191919] text-gray-500"
+                      >
+                        Seleccionar departamento
+                      </option>
+                      {cities.map((city) => (
+                        <option
+                          key={city}
+                          value={city}
+                          className="bg-[#191919] text-white"
+                        >
+                          {city}
                         </option>
                       ))}
                     </select>

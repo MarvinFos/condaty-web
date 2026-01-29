@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactModal from "../components/ContactModal";
@@ -35,12 +36,44 @@ import {
 
 export default function LandingPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [modalVariant, setModalVariant] = useState<"contact" | "exit">(
+    "contact",
+  );
+
+  // Timer: Open modal every 2 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setModalVariant("exit");
+      setIsContactModalOpen(true);
+    }, 120000); // 2 minutes
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Exit Intent: Open modal when mouse leaves the window (desktop only)
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0) {
+        setModalVariant("exit");
+        setIsContactModalOpen(true);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+  }, []);
+
+  const openContactModal = () => {
+    setModalVariant("contact");
+    setIsContactModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
+        variant={modalVariant}
       />
       <Navbar />
       <main className="flex flex-col items-center">
@@ -59,7 +92,7 @@ export default function LandingPage() {
             </div>
             <div className="flex gap-4">
               <div
-                onClick={() => setIsContactModalOpen(true)}
+                onClick={openContactModal}
                 className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
               >
                 <span className="text-[16px] font-semibold text-[#191919]">
@@ -370,36 +403,54 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="w-full bg-gradient-to-b from-[#191919] to-[#063322] py-[100px]">
+        <section className="w-full bg-gradient-to-b from-[#191919] to-[#063322] py-[100px] overflow-hidden">
           <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center px-6 sm:px-10">
             <span className="text-center text-[34px] font-normal text-white uppercase tracking-wide">
               Con la confianza de los mejores
             </span>
           </div>
 
-          <div className="mt-12 flex w-full flex-nowrap items-center justify-center gap-8 overflow-x-auto px-6 md:gap-12 no-scrollbar">
-            {[
-              "logo-hacienda-del-urubo.png",
-              "logo-phantom.png",
-              "logo-elite-sirari.png",
-              "logo-onix-art.png",
-              "logo-infinity.png",
-              "logo-legendary.png",
-              "logo-el-greco.png",
-              "logo-bosques-de-la-colina.png",
-            ].map((logo, index) => (
-              <div
-                key={index}
-                className="relative h-[42px] w-[146px] flex-shrink-0"
-              >
-                <Image
-                  src={`/images/condominios/${logo}`}
-                  alt={logo.replace("logo-", "").replace(".png", "")}
-                  fill
-                  className="object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
-                />
-              </div>
-            ))}
+          <div className="mt-12 flex w-full overflow-hidden">
+            <motion.div
+              className="flex gap-16 md:gap-24 px-6 min-w-max"
+              animate={{ x: "-50%" }}
+              transition={{
+                ease: "linear",
+                duration: 30,
+                repeat: Infinity,
+              }}
+            >
+              {[
+                "logo-hacienda-del-urubo.png",
+                "logo-phantom.png",
+                "logo-elite-sirari.png",
+                "logo-onix-art.png",
+                "logo-infinity.png",
+                "logo-legendary.png",
+                "logo-el-greco.png",
+                "logo-bosques-de-la-colina.png",
+                "logo-hacienda-del-urubo.png",
+                "logo-phantom.png",
+                "logo-elite-sirari.png",
+                "logo-onix-art.png",
+                "logo-infinity.png",
+                "logo-legendary.png",
+                "logo-el-greco.png",
+                "logo-bosques-de-la-colina.png",
+              ].map((logo, index) => (
+                <div
+                  key={index}
+                  className="relative h-[42px] w-[146px] flex-shrink-0"
+                >
+                  <Image
+                    src={`/images/condominios/${logo}`}
+                    alt={logo.replace("logo-", "").replace(".png", "")}
+                    fill
+                    className="object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
