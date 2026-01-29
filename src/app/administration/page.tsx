@@ -1,11 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import ContactModal from "../../components/ContactModal";
 import { CircleDollarSign, Users, ShieldCheck } from "lucide-react";
 
 export default function AdministrationPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#191919] text-white">
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
       <Navbar />
 
       <main className="flex flex-col w-full">
@@ -34,7 +44,10 @@ export default function AdministrationPage() {
                     tu hogar sin complicaciones.
                   </span>
                 </div>
-                <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors">
+                <div
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+                >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Contáctanos
                   </span>
@@ -256,7 +269,10 @@ export default function AdministrationPage() {
                 <span className="text-[16px] text-gray-300">
                   Conoce nuestra solución y agenda tu demostración.
                 </span>
-                <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors">
+                <div
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+                >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Contáctanos
                   </span>

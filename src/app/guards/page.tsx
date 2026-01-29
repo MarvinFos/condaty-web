@@ -1,11 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import ContactModal from "../../components/ContactModal";
 import { KeyRound, Touchpad, MessageSquare, ScanLine } from "lucide-react";
 
 export default function GuardiasPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#191919] text-white">
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
       <Navbar />
 
       <main className="flex flex-col w-full overflow-x-hidden">
@@ -78,7 +88,10 @@ export default function GuardiasPage() {
                     en un solo lugar.
                   </span>
                 </div>
-                <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-10 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors shadow-[0_0_20px_rgba(0,227,142,0.4)]">
+                <div
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="rounded-full border border-[#00e38e] bg-[#00e38e] px-10 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors shadow-[0_0_20px_rgba(0,227,142,0.4)]"
+                >
                   <span className="text-[18px] font-bold text-[#191919]">
                     Contáctanos
                   </span>
@@ -115,7 +128,7 @@ export default function GuardiasPage() {
 
             <div className="flex justify-center gap-5 self-stretch flex-wrap lg:flex-nowrap">
               {/* Card 1: Seguridad reforzada */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px]">
+              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <KeyRound className="w-9 h-9 text-[#00e38e]" />
@@ -133,7 +146,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 2: Fácil de usar */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px]">
+              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <Touchpad className="w-9 h-9 text-[#00e38e]" />
@@ -151,7 +164,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 3: Comunicación directa */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px]">
+              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <MessageSquare className="w-9 h-9 text-[#00e38e]" />
@@ -169,7 +182,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 4: Acceso inmediato con QR */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px]">
+              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <ScanLine className="w-9 h-9 text-[#00e38e]" />
@@ -201,7 +214,7 @@ export default function GuardiasPage() {
           />
 
           <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-10 relative z-10">
-            <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-center">
+            <div className="flex flex-col items-center  lg:flex-row lg:items-center lg:justify-center">
               {/* Left Image (Guard) */}
               <div className="relative w-full max-w-[500px] lg:mr-20">
                 <Image
@@ -247,7 +260,10 @@ export default function GuardiasPage() {
                   </p>
                 </div>
 
-                <div className="mt-4 rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors">
+                <div
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="mt-4 rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+                >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Contáctanos
                   </span>

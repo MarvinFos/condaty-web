@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ContactModal from "../components/ContactModal";
 import {
   CircleDollarSign,
   Key,
@@ -30,8 +34,14 @@ import {
 } from "lucide-react";
 
 export default function LandingPage() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#191919] text-white">
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
       <Navbar />
       <main className="flex flex-col items-center">
         <section className="relative w-full max-w-[1440px] overflow-hidden bg-[#191919] px-6 pb-20 pt-[200px] sm:px-10">
@@ -48,7 +58,10 @@ export default function LandingPage() {
               </span>
             </div>
             <div className="flex gap-4">
-              <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors">
+              <div
+                onClick={() => setIsContactModalOpen(true)}
+                className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+              >
                 <span className="text-[16px] font-semibold text-[#191919]">
                   Contáctanos
                 </span>
@@ -411,11 +424,16 @@ export default function LandingPage() {
                     Descarga nuestro PDF haciendo click abajo
                   </span>
                 </div>
-                <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4">
+                <a
+                  href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+                >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Descargar PDF
                   </span>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -426,14 +444,17 @@ export default function LandingPage() {
             <div className="flex flex-1 flex-col items-start gap-7">
               <div className="flex flex-col gap-4">
                 <span className="text-[28px] font-semibold leading-[1.2] sm:text-[40px]">
-                  Información organizada, desiciones efectivas
+                  Información organizada, decisiones efectivas
                 </span>
                 <span className="text-[18px] font-medium text-[#d9d9d9]">
                   Visualiza toda la información de tu condominio en un solo
                   lugar.
                 </span>
               </div>
-              <div className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4">
+              <div
+                onClick={() => setIsContactModalOpen(true)}
+                className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+              >
                 <span className="text-[16px] font-semibold text-[#191919]">
                   Contáctanos
                 </span>
