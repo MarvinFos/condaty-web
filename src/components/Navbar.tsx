@@ -47,16 +47,32 @@ export default function Navbar() {
                     </span>
                   </div>
                 </Link>
-                <div className="flex items-center justify-center gap-2 cursor-pointer">
-                  <span className="text-base font-medium text-white hover:text-[#00e38e] transition-colors">
-                    Residentes
-                  </span>
-                </div>
-                <div className="flex items-center justify-center gap-2 cursor-pointer">
-                  <span className="text-base font-medium text-white hover:text-[#00e38e] transition-colors">
-                    Guardias
-                  </span>
-                </div>
+                <Link href="/residentes">
+                  <div className="flex items-center justify-center gap-2 cursor-pointer">
+                    <span
+                      className={`text-base font-medium hover:text-[#00e38e] transition-colors ${
+                        isActive("/residentes")
+                          ? "text-[#00e38e]"
+                          : "text-white"
+                      }`}
+                    >
+                      Residentes
+                    </span>
+                  </div>
+                </Link>
+                <Link href="/guardias">
+                  <div className="flex items-center justify-center gap-2 cursor-pointer">
+                    <span
+                      className={`text-base font-medium hover:text-[#00e38e] transition-colors ${
+                        isActive("/guardias")
+                          ? "text-[#00e38e]"
+                          : "text-white"
+                      }`}
+                    >
+                      Guardias
+                    </span>
+                  </div>
+                </Link>
               </nav>
               <div className="flex items-center gap-3">
                 <button className="flex h-12 flex-col items-center justify-center gap-2.5 rounded-[10px] border border-solid border-[#d9d9d9] bg-[#292929] px-6 py-3 hover:bg-[#333] transition-colors">
