@@ -62,11 +62,15 @@ export default function Navbar() {
                 href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 lg:h-12 flex-col items-center justify-center gap-2.5 rounded-[10px] border border-solid border-[#00e38e] bg-[#00e38e] px-4 lg:px-6 hover:bg-[#00c97e] transition-colors duration-200"
+                className="relative h-14 lg:h-[85px] -mt-6 hover:opacity-90 transition-opacity duration-200 flex items-center"
               >
-                <span className="text-center text-xs lg:text-[16px] font-semibold text-[#191919]">
-                  RECURSOS GRATUITOS
-                </span>
+                <Image
+                  src="/images/condominios/btn-recursos.png"
+                  alt="Recursos Gratuitos"
+                  width={280}
+                  height={85}
+                  className="h-full w-auto object-contain"
+                />
               </a>
               <a
                 href="https://admin.condaty.com/"
@@ -124,12 +128,16 @@ export default function Navbar() {
               href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 items-center justify-center rounded-[10px] border border-solid border-[#00e38e] bg-[#00e38e] px-6"
+              className="relative h-20 -mt-4 flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="text-center text-[16px] font-semibold text-[#191919]">
-                RECURSOS GRATUITOS
-              </span>
+              <Image
+                src="/images/condominios/btn-recursos.png"
+                alt="Recursos Gratuitos"
+                width={280}
+                height={80}
+                className="h-full w-auto object-contain"
+              />
             </a>
             <a
               href="https://admin.condaty.com/"

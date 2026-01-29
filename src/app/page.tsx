@@ -77,80 +77,94 @@ export default function LandingPage() {
       />
       <Navbar />
       <main className="flex flex-col items-center">
-        <section className="relative w-full max-w-[1440px] overflow-hidden bg-[#191919] px-6 pb-20 pt-[200px] sm:px-10">
-          <div className="relative z-10 flex flex-col items-center gap-8 text-center">
-            <div className="flex flex-col items-center gap-3">
-              <span className="text-[38px] font-semibold leading-[1.1] sm:text-[60px]">
-                ¡Tecnología que une{" "}
-                <span className="text-[#00e38e]">vecinos</span>!
-              </span>
-              <span className="max-w-[720px] text-[16px] font-normal text-white sm:text-[20px]">
-                Gestión de condominios simplificada para administradores,
-                control de accesos para guardias y una experiencia cómoda para
-                residentes.
-              </span>
-            </div>
-            <div className="flex gap-4">
-              <div
-                onClick={openContactModal}
-                className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
-              >
-                <span className="text-[16px] font-semibold text-[#191919]">
-                  Contáctanos
-                </span>
-              </div>
-            </div>
+        <section className="relative w-full overflow-hidden bg-[#191919] pb-20 pt-[200px]">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/condominios/condominio-ilustracion2.jpg"
+              alt="Background"
+              fill
+              className="object-cover opacity-30"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#191919] via-[#191919]/80 to-[#191919]" />
           </div>
 
-          <div className="relative mt-12 flex w-full items-end justify-center sm:mt-20">
-            {/* Background Glow Effects - Moved inside for better positioning relative to images */}
-            <div
-              className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[350px] rounded-[800px] opacity-100 blur-[50px] pointer-events-none z-0 mix-blend-screen"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
-              }}
-            />
-            <div
-              className="absolute left-1/2 top-[-40%] -translate-x-1/2 -translate-y-1/2 w-[150px] h-[900px] rounded-[800px] opacity-100 blur-[70px] pointer-events-none z-0 mix-blend-screen"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
-              }}
-            />
-
-            {/* Left Image - Owner */}
-            <div className="relative z-10 -mr-[80px] mb-4 w-[25%] max-w-[220px] sm:mb-8 opacity-90 hover:opacity-100 transition-opacity">
-              <Image
-                src="/images/owner.png"
-                alt="App Residentes"
-                width={220}
-                height={454}
-                className="h-auto w-full object-contain drop-shadow-2xl"
-              />
+          <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 sm:px-10 flex flex-col items-center">
+            <div className="flex flex-col items-center gap-8 text-center">
+              <div className="flex flex-col items-center gap-3">
+                <span className="text-[38px] font-semibold leading-[1.1] sm:text-[60px]">
+                  ¡Tecnología que une{" "}
+                  <span className="text-[#00e38e]">vecinos</span>!
+                </span>
+                <span className="max-w-[720px] text-[16px] font-normal text-white sm:text-[20px]">
+                  Gestión de condominios simplificada para administradores,
+                  control de accesos para guardias y una experiencia cómoda para
+                  residentes.
+                </span>
+              </div>
+              <div className="flex gap-4">
+                <div
+                  onClick={openContactModal}
+                  className="relative z-50 rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors shadow-[0_0_20px_rgba(0,227,142,0.4)]"
+                >
+                  <span className="text-[16px] font-semibold text-[#191919]">
+                    Contáctanos
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Center Image - Laptop Admin */}
-            <div className="relative z-30 w-full max-w-[814px]">
-              <Image
-                src="/images/laptop-admin.png"
-                alt="Panel Administrativo"
-                width={814}
-                height={530}
-                className="h-auto w-full object-contain drop-shadow-2xl"
-                priority
+            <div className="relative mt-12 flex w-full items-end justify-center sm:mt-20">
+              {/* Background Glow Effects - Moved inside for better positioning relative to images */}
+              <div
+                className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[350px] rounded-[800px] opacity-100 blur-[50px] pointer-events-none z-0 mix-blend-screen"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
+                }}
               />
-            </div>
+              <div
+                className="absolute left-1/2 top-[-40%] -translate-x-1/2 -translate-y-1/2 w-[150px] h-[900px] rounded-[800px] opacity-100 blur-[70px] pointer-events-none z-0 mix-blend-screen"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
+                }}
+              />
 
-            {/* Right Image - Guard */}
-            <div className="relative z-10 -ml-[80px] mb-4 w-[25%] max-w-[220px] sm:mb-8 opacity-90 hover:opacity-100 transition-opacity">
-              <Image
-                src="/images/guard.png"
-                alt="App Guardias"
-                width={220}
-                height={454}
-                className="h-auto w-full object-contain drop-shadow-2xl"
-              />
+              {/* Left Image - Owner */}
+              <div className="relative z-10 -mr-[80px] mb-4 w-[25%] max-w-[220px] sm:mb-8 opacity-90 hover:opacity-100 transition-opacity">
+                <Image
+                  src="/images/owner.png"
+                  alt="App Residentes"
+                  width={220}
+                  height={454}
+                  className="h-auto w-full object-contain drop-shadow-2xl"
+                />
+              </div>
+
+              {/* Center Image - Laptop Admin */}
+              <div className="relative z-30 w-full max-w-[814px]">
+                <Image
+                  src="/images/laptop-admin.png"
+                  alt="Panel Administrativo"
+                  width={814}
+                  height={530}
+                  className="h-auto w-full object-contain drop-shadow-2xl"
+                  priority
+                />
+              </div>
+
+              {/* Right Image - Guard */}
+              <div className="relative z-10 -ml-[80px] mb-4 w-[25%] max-w-[220px] sm:mb-8 opacity-90 hover:opacity-100 transition-opacity">
+                <Image
+                  src="/images/guard.png"
+                  alt="App Guardias"
+                  width={220}
+                  height={454}
+                  className="h-auto w-full object-contain drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
         </section>
