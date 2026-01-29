@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Condaty - Soluciones Inmobiliarias",
   description: "Encuentra tu hogar ideal con Condaty. La mejor plataforma para la gestión y búsqueda de propiedades.",
   keywords: ["inmobiliaria", "propiedades", "venta", "alquiler", "casas", "apartamentos", "condaty"],
+  icons: {
+    icon: "/images/logo_condaty.png",
+  },
   openGraph: {
     title: "Condaty - Soluciones Inmobiliarias",
     description: "La mejor plataforma para la gestión y búsqueda de propiedades.",
