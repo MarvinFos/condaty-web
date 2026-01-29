@@ -285,7 +285,7 @@ export default function LandingPage() {
               </span>{" "}
               y<br className="hidden sm:block" /> beneficios{" "}
             </h2>
-            <div className="flex flex-col items-center justify-center gap-7 md:flex-row md:items-stretch">
+            <div className="flex flex-col items-center justify-center gap-10 md:gap-7 md:flex-row md:items-stretch">
               {/* Card 1 - Manejo de usuarios */}
               <div
                 className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] bg-[#0a0a0a] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[600px]"
@@ -334,7 +334,7 @@ export default function LandingPage() {
 
               {/* Card 2 - Administración de usuarios (Featured) */}
               <div
-                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[660px] relative -top-6"
+                className="flex h-auto w-full max-w-[408px] flex-col items-center gap-6 rounded-2xl border border-[#00e38e] px-7 py-10 transition-transform hover:-translate-y-1 md:h-[660px] relative md:-top-6"
                 style={{
                   background:
                     "linear-gradient(180deg, rgba(0, 227, 142, 0.08) 0%, rgba(0, 0, 0, 0) 100%)",

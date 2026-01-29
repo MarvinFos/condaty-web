@@ -114,7 +114,7 @@ export default function AdministrationPage() {
 
               <div className="relative w-full flex flex-col items-center justify-center gap-8 lg:flex-row lg:items-center">
                 {/* Left Features */}
-                <div className="flex flex-col gap-12 text-right lg:w-1/4">
+                <div className="flex flex-col gap-12 text-center lg:w-1/4 lg:text-right">
                   <div className="flex flex-col gap-2">
                     <span className="text-[18px] font-bold text-[#00e38e]">
                       Gestión de usuarios
@@ -158,7 +158,7 @@ export default function AdministrationPage() {
                 </div>
 
                 {/* Right Features */}
-                <div className="flex flex-col gap-12 text-left lg:w-1/4">
+                <div className="flex flex-col gap-12 text-center lg:w-1/4 lg:text-left">
                   <div className="flex flex-col gap-2">
                     <span className="text-[18px] font-bold text-[#00e38e]">
                       Moras y Multas
@@ -184,7 +184,7 @@ export default function AdministrationPage() {
         </section>
 
         {/* Section 3: Descubre nuestro ecosistema */}
-        <section className="relative z-40 w-full h-[600px] overflow-hidden bg-[#191919] flex items-center justify-center">
+        <section className="relative z-40 w-full min-h-[600px] h-auto py-20 overflow-hidden bg-[#191919] flex items-center justify-center">
           {/* Green Glow Effect at the bottom */}
           <div className="absolute bottom-[-100px] left-0 h-[300px] w-full bg-[#00e38e] opacity-20 blur-[100px]" />
 
@@ -201,7 +201,7 @@ export default function AdministrationPage() {
 
             <div className="flex w-full flex-wrap justify-center gap-6">
               {/* Card 1: Pagos sin complicaciones */}
-              <div className="h-[260px] w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
+              <div className="min-h-[260px] h-auto w-full max-w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
                 <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 rounded-lg">
                   <CircleDollarSign className="h-9 w-7 text-[#00e38e]" />
                 </div>
@@ -217,7 +217,7 @@ export default function AdministrationPage() {
               </div>
 
               {/* Card 2: Invitaciones digitales */}
-              <div className="h-[260px] w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
+              <div className="min-h-[260px] h-auto w-full max-w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
                 <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 rounded-lg">
                   <Users className="h-9 w-7 text-[#00e38e]" />
                 </div>
@@ -233,7 +233,7 @@ export default function AdministrationPage() {
               </div>
 
               {/* Card 3: Seguridad garantizada */}
-              <div className="h-[260px] w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
+              <div className="min-h-[260px] h-auto w-full max-w-[305px] flex flex-col justify-center gap-10 rounded-2xl border-t border-l border-r border-b-2 border-[#2E6764] bg-[#00e38e]/[0.08] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] p-7 text-left hover:scale-105 transition-transform">
                 <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 rounded-lg">
                   <ShieldCheck className="h-9 w-7 text-[#00e38e]" />
                 </div>

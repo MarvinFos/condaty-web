@@ -126,9 +126,9 @@ export default function GuardiasPage() {
                 The background shapes seemed to be behind the content in the design, likely decorative.
                 We will focus on the cards layout as requested. */}
 
-            <div className="flex justify-center gap-5 self-stretch flex-wrap lg:flex-nowrap">
+            <div className="flex justify-center gap-5 self-stretch flex-wrap">
               {/* Card 1: Seguridad reforzada */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
+              <div className="flex flex-col justify-center gap-[25px] w-full max-w-[305px] bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <KeyRound className="w-9 h-9 text-[#00e38e]" />
@@ -146,7 +146,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 2: Fácil de usar */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
+              <div className="flex flex-col justify-center gap-[25px] w-full max-w-[305px] bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <Touchpad className="w-9 h-9 text-[#00e38e]" />
@@ -164,7 +164,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 3: Comunicación directa */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
+              <div className="flex flex-col justify-center gap-[25px] w-full max-w-[305px] bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <MessageSquare className="w-9 h-9 text-[#00e38e]" />
@@ -182,7 +182,7 @@ export default function GuardiasPage() {
               </div>
 
               {/* Card 4: Acceso inmediato con QR */}
-              <div className="flex flex-col justify-center gap-[25px] grow bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
+              <div className="flex flex-col justify-center gap-[25px] w-full max-w-[305px] bg-[#00e38e]/[0.08] p-10 rounded-[20px] border border-[#2E6764] shadow-[inset_0_-16px_20px_0_rgba(0,227,142,0.28)] min-h-[280px] hover:scale-105 transition-transform duration-300">
                 <div className="flex flex-col gap-[11px] self-stretch">
                   <div className="w-[44px] h-[44px] flex justify-center items-center gap-2 p-2 bg-[#00e38e]/20 rounded-lg">
                     <ScanLine className="w-9 h-9 text-[#00e38e]" />
