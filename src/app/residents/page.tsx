@@ -1,21 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
+import { Helmet } from "react-helmet-async";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import ContactModal from "../../components/ContactModal";
 import { CircleDollarSign, Users, ShieldCheck } from "lucide-react";
+
+const ContactModal = lazy(() => import("../../components/ContactModal"));
 
 export default function ResidentesPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
+      <Helmet>
+        <title>Residentes | Condaty</title>
+        <meta
+          name="description"
+          content="App para residentes con pagos, accesos, comunicación y comodidad en el condominio."
+        />
+        <meta property="og:title" content="Residentes | Condaty" />
+        <meta
+          property="og:description"
+          content="App para residentes con pagos, accesos, comunicación y comodidad en el condominio."
+        />
+        <meta
+          property="og:image"
+          content="https://www.condaty.com/images/condominios/family.png"
+        />
+        <meta property="og:url" content="https://www.condaty.com/residents" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </Suspense>
       <Navbar />
 
       <main className="flex flex-col w-full">
@@ -34,11 +56,11 @@ export default function ResidentesPage() {
               {/* Left Content */}
               <div className="flex flex-col items-start gap-8 max-w-[600px] relative z-10">
                 <div className="flex flex-col gap-3">
-                  <span className="text-[38px] font-semibold leading-[1.1] sm:text-[50px]">
+                  <h1 className="text-[38px] font-semibold leading-[1.1] sm:text-[50px]">
                     Todo tu condominio
                     <br />
                     <span className="text-[#00e38e]">en una sola app</span>
-                  </span>
+                  </h1>
                   <span className="text-[16px] font-normal text-white sm:text-[18px]">
                     Pagos, accesos y comunicación más simples para que disfrutes
                     tu hogar sin complicaciones.

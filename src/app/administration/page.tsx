@@ -1,21 +1,49 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
+import { Helmet } from "react-helmet-async";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import ContactModal from "../../components/ContactModal";
 import { CircleDollarSign, Users, ShieldCheck } from "lucide-react";
+
+const ContactModal = lazy(() => import("../../components/ContactModal"));
 
 export default function AdministrationPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
+      <Helmet>
+        <title>Administración de Condominios | Condaty</title>
+        <meta
+          name="description"
+          content="Panel administrativo para gestionar usuarios, ingresos, egresos y documentación del condominio."
+        />
+        <meta
+          property="og:title"
+          content="Administración de Condominios | Condaty"
+        />
+        <meta
+          property="og:description"
+          content="Panel administrativo para gestionar usuarios, ingresos, egresos y documentación del condominio."
+        />
+        <meta
+          property="og:image"
+          content="https://www.condaty.com/images/condominios/laptop-home.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.condaty.com/administration"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </Suspense>
       <Navbar />
 
       <main className="flex flex-col w-full">
@@ -34,11 +62,11 @@ export default function AdministrationPage() {
               {/* Left Content */}
               <div className="flex flex-col items-start gap-8 max-w-[600px] relative z-10">
                 <div className="flex flex-col gap-3">
-                  <span className="text-[38px] font-semibold leading-[1.1] sm:text-[50px]">
+                  <h1 className="text-[38px] font-semibold leading-[1.1] sm:text-[50px]">
                     Todo tu condominio
                     <br />
                     <span className="text-[#00e38e]">en una sola app</span>
-                  </span>
+                  </h1>
                   <span className="text-[16px] font-normal text-white sm:text-[18px]">
                     Pagos, accesos y comunicación más simples para que disfrutes
                     tu hogar sin complicaciones.

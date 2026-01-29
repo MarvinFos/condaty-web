@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ContactModal from "../components/ContactModal";
 import {
   CircleDollarSign,
   Key,
@@ -33,6 +33,8 @@ import {
   Cloud,
   Upload,
 } from "lucide-react";
+
+const ContactModal = lazy(() => import("../components/ContactModal"));
 
 export default function LandingPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -68,21 +70,96 @@ export default function LandingPage() {
     setIsContactModalOpen(true);
   };
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Condaty",
+      url: "https://www.condaty.com",
+      logo: "https://www.condaty.com/images/logo_condaty.png",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Condaty",
+      url: "https://www.condaty.com",
+      hasPart: [
+        {
+          "@type": "SiteNavigationElement",
+          name: "Inicio",
+          url: "https://www.condaty.com/",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Administración",
+          url: "https://www.condaty.com/administration",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Residentes",
+          url: "https://www.condaty.com/residents",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Guardias",
+          url: "https://www.condaty.com/guards",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Políticas de privacidad",
+          url: "https://www.condaty.com/privacy-policy",
+        },
+        {
+          "@type": "SiteNavigationElement",
+          name: "Eliminar mi cuenta",
+          url: "https://www.condaty.com/delete-account",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-        variant={modalVariant}
-      />
+      <Helmet>
+        <title>Condaty | Software de gestión de condominios</title>
+        <meta
+          name="description"
+          content="Plataforma para administración de condominios con pagos, accesos, comunicación y reportes en tiempo real."
+        />
+        <meta
+          property="og:title"
+          content="Condaty | Software de gestión de condominios"
+        />
+        <meta
+          property="og:description"
+          content="Plataforma para administración de condominios con pagos, accesos, comunicación y reportes en tiempo real."
+        />
+        <meta
+          property="og:image"
+          content="https://www.condaty.com/images/condominios/condominio-ilustracion2.jpg"
+        />
+        <meta property="og:url" content="https://www.condaty.com/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+          variant={modalVariant}
+        />
+      </Suspense>
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <main className="flex flex-col items-center">
         <section className="relative w-full overflow-hidden bg-[#191919] pb-20 pt-[200px]">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
               src="/images/condominios/condominio-ilustracion2.jpg"
-              alt="Background"
+              alt="Condominio moderno"
               fill
               className="object-cover opacity-30"
               priority
@@ -93,10 +170,10 @@ export default function LandingPage() {
           <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 sm:px-10 flex flex-col items-center">
             <div className="flex flex-col items-center gap-8 text-center">
               <div className="flex flex-col items-center gap-3">
-                <span className="text-[38px] font-semibold leading-[1.1] sm:text-[60px]">
+                <h1 className="text-[38px] font-semibold leading-[1.1] sm:text-[60px]">
                   ¡Tecnología que une{" "}
                   <span className="text-[#00e38e]">vecinos</span>!
-                </span>
+                </h1>
                 <span className="max-w-[720px] text-[16px] font-normal text-white sm:text-[20px]">
                   Gestión de condominios simplificada para administradores,
                   control de accesos para guardias y una experiencia cómoda para

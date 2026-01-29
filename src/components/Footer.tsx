@@ -1,19 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactModal from "./ContactModal";
+
+const ContactModal = lazy(() => import("./ContactModal"));
 
 export default function Footer() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <footer className="w-full border-t border-[#535353] bg-[#191919]">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </Suspense>
       <div className="mx-auto w-full max-w-[1440px] px-6 py-12 sm:px-10">
         <div className="grid gap-12 md:grid-cols-3">
           <div className="flex flex-col gap-2">

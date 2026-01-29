@@ -1,30 +1,43 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
   return [
     {
-      url: 'https://www.condaty.com',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
+      url: "https://www.condaty.com",
+      lastModified,
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: 'https://www.condaty.com/#propiedades',
-      lastModified: new Date(),
-      changeFrequency: 'daily',
+      url: "https://www.condaty.com/administration",
+      lastModified,
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://www.condaty.com/#nosotros',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      url: "https://www.condaty.com/residents",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: 'https://www.condaty.com/#contacto',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      url: "https://www.condaty.com/guards",
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://www.condaty.com/privacy-policy",
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: "https://www.condaty.com/delete-account",
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ];
 }

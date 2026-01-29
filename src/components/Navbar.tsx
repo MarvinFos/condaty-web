@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import ContactModal from "./ContactModal";
+
+const ContactModal = lazy(() => import("./ContactModal"));
 
 export default function Navbar() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -23,11 +24,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 flex w-full justify-center bg-[#191919] border-b border-[#535353]">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-        variant="contact"
-      />
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+          variant="contact"
+        />
+      </Suspense>
       <div className="flex w-full justify-between items-center px-6 md:px-10 lg:px-20 xl:px-36 py-2 md:py-1">
         <div className="flex h-[60px] md:h-[82px] grow items-center justify-between">
           <Link href="/">

@@ -1,21 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
+import { Helmet } from "react-helmet-async";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import ContactModal from "../../components/ContactModal";
 import { KeyRound, Touchpad, MessageSquare, ScanLine } from "lucide-react";
+
+const ContactModal = lazy(() => import("../../components/ContactModal"));
 
 export default function GuardiasPage() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-      />
+      <Helmet>
+        <title>Guardias | Condaty</title>
+        <meta
+          name="description"
+          content="App para guardias con control de visitas, accesos y comunicación en tiempo real."
+        />
+        <meta property="og:title" content="Guardias | Condaty" />
+        <meta
+          property="og:description"
+          content="App para guardias con control de visitas, accesos y comunicación en tiempo real."
+        />
+        <meta
+          property="og:image"
+          content="https://www.condaty.com/images/condominios/app-guard.png"
+        />
+        <meta property="og:url" content="https://www.condaty.com/guards" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Suspense fallback={null}>
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </Suspense>
       <Navbar />
 
       <main className="flex flex-col w-full overflow-x-hidden">
