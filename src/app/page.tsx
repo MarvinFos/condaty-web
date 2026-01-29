@@ -271,7 +271,7 @@ export default function LandingPage() {
               <span className="text-[#00e38e]">
                 Conoce todas nuestras funcionalidades
               </span>{" "}
-              y<br className="hidden sm:block" /> beneficios {" "}
+              y<br className="hidden sm:block" /> beneficios{" "}
             </h2>
             <div className="flex flex-col items-center justify-center gap-7 md:flex-row md:items-stretch">
               {/* Card 1 - Manejo de usuarios */}
@@ -471,7 +471,7 @@ export default function LandingPage() {
 
         <section className="w-full max-w-[1440px] bg-[#191919] px-6 py-10 sm:px-10">
           <div className="flex flex-col gap-10 lg:h-[642px] lg:flex-row lg:items-center">
-            <div className="flex flex-1 flex-col gap-7">
+            <div className="flex flex-1 flex-col items-start gap-7">
               <div className="flex flex-col gap-4">
                 <span className="text-[28px] font-semibold leading-[1.2] sm:text-[40px]">
                   Información organizada, desiciones efectivas
@@ -487,29 +487,29 @@ export default function LandingPage() {
                 </span>
               </div>
             </div>
-            <div className="flex flex-1 justify-center">
+            <div className="flex flex-1 justify-center relative">
               <Image
-                src="/images/mock/info-illustration.svg"
+                src="/images/condominios/phone-app.png"
                 alt="Panel de información"
-                width={664}
-                height={520}
-                className="object-contain"
+                width={663}
+                height={642}
+                className="object-contain relative z-10"
+              />
+              <div
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-[80px]"
+                style={{
+                  background:
+                    "radial-gradient(circle, #00e38e 0%, transparent 70%)",
+                  width: "400px",
+                  height: "400px",
+                }}
               />
             </div>
           </div>
         </section>
 
         <footer className="w-full max-w-[1440px] border-t border-[#535353] bg-[#191919] px-6 py-12 sm:px-10">
-          <div className="grid gap-12 md:grid-cols-4">
-            <div className="flex flex-col gap-4 md:col-span-2">
-              <span className="text-[20px] font-semibold text-[#00e38e]">
-                Condaty
-              </span>
-              <span className="text-[14px] text-[#d9d9d9]">
-                Gestión de condominios simplificada para administradores,
-                guardias y residentes.
-              </span>
-            </div>
+          <div className="grid gap-12 md:grid-cols-3">
             <div className="flex flex-col gap-2">
               <span className="text-[14px] font-medium text-[#00e38e]">
                 Soporte
@@ -520,16 +520,57 @@ export default function LandingPage() {
               <span className="text-[16px] text-white">
                 Políticas de privacidad
               </span>
-              <span className="text-[16px] text-white">
-                Términos y condiciones
-              </span>
+              <span className="text-[16px] text-white">Eliminar mi cuenta</span>
+              <span className="text-[16px] text-white">Contactar</span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-[14px] font-medium text-[#00e38e]">
-                Contacto
+                Contactos
               </span>
               <span className="text-[16px] text-white">hola@condaty.com</span>
-              <span className="text-[16px] text-white">+591 700 12345</span>
+              <span className="text-[16px] text-white">(+591) 75847564</span>
+            </div>
+            <div className="flex flex-col gap-4">
+              <span className="text-[14px] font-medium text-[#00e38e]">
+                Síguenos
+              </span>
+              <div className="flex gap-4">
+                <Image
+                  src="/images/redsocial/facebook.png"
+                  alt="Facebook"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                <Image
+                  src="/images/redsocial/insta.png"
+                  alt="Instagram"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                <Image
+                  src="/images/redsocial/linkedin.png"
+                  alt="LinkedIn"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                <Image
+                  src="/images/redsocial/youtube.png"
+                  alt="YouTube"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                <Image
+                  src="/images/redsocial/tiktok.png"
+                  alt="TikTok"
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </footer>
