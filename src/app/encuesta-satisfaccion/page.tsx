@@ -14,21 +14,20 @@ export default function SurveyPage() {
       training: 0,
       support: 0,
       residentEase: 0,
+      recommendation: 0,
     },
     platform: {
       easeOfUse: 0,
       coverage: 0,
       speed: 0,
       control: 0,
+      recommendation: 0,
     },
     support: {
       speed: 0,
       professionalism: 0,
       accompaniment: 0,
-    },
-    impact: {
-      results: 0,
-      nps: -1, // -1 means not selected
+      recommendation: 0,
     },
     comments: {
       valuableFeatures: "",
@@ -41,7 +40,7 @@ export default function SurveyPage() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const handleRatingChange = (
-    section: "onboarding" | "platform" | "support" | "impact",
+    section: "onboarding" | "platform" | "support",
     field: string,
     value: number,
   ) => {
@@ -348,6 +347,20 @@ export default function SurveyPage() {
                     labels
                   />
                 </div>
+
+                <div className="space-y-3">
+                  <label className="block text-gray-200">
+                    1.5 ¿Qué tan probable es que recomiendes a Condaty a otros
+                    condominios?
+                  </label>
+                  <RatingScale
+                    value={formData.onboarding.recommendation}
+                    onChange={(val) =>
+                      handleRatingChange("onboarding", "recommendation", val)
+                    }
+                    labels
+                  />
+                </div>
               </div>
             </section>
 
@@ -412,6 +425,20 @@ export default function SurveyPage() {
                     labels
                   />
                 </div>
+
+                <div className="space-y-3">
+                  <label className="block text-gray-200">
+                    2.5 ¿Qué tan probable es que recomiendes a Condaty a otros
+                    condominios?
+                  </label>
+                  <RatingScale
+                    value={formData.platform.recommendation}
+                    onChange={(val) =>
+                      handleRatingChange("platform", "recommendation", val)
+                    }
+                    labels
+                  />
+                </div>
               </div>
             </section>
 
@@ -460,47 +487,27 @@ export default function SurveyPage() {
                     labels
                   />
                 </div>
+
+                <div className="space-y-3">
+                  <label className="block text-gray-200">
+                    3.4 ¿Qué tan probable es que recomiendes a Condaty a otros
+                    condominios?
+                  </label>
+                  <RatingScale
+                    value={formData.support.recommendation}
+                    onChange={(val) =>
+                      handleRatingChange("support", "recommendation", val)
+                    }
+                    labels
+                  />
+                </div>
               </div>
             </section>
 
             {/* Section 4 */}
             <section className="flex flex-col gap-6">
               <h2 className="text-2xl font-semibold text-white border-b border-white/10 pb-4">
-                4. Impacto Percibido
-              </h2>
-
-              <div className="space-y-8">
-                <div className="space-y-3">
-                  <label className="block text-gray-200">
-                    4.1 ¿Qué tan satisfecho(a) estás con los resultados
-                    obtenidos (menor morosidad, más orden, mejor comunicación)?
-                  </label>
-                  <RatingScale
-                    value={formData.impact.results}
-                    onChange={(val) =>
-                      handleRatingChange("impact", "results", val)
-                    }
-                    labels
-                  />
-                </div>
-
-                <div className="space-y-3">
-                  <label className="block text-gray-200">
-                    4.2 ¿Qué tan probable es que recomiendes a Condaty a otros
-                    condominios? (NPS)
-                  </label>
-                  <NPSScale
-                    value={formData.impact.nps}
-                    onChange={(val) => handleRatingChange("impact", "nps", val)}
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* Section 5 */}
-            <section className="flex flex-col gap-6">
-              <h2 className="text-2xl font-semibold text-white border-b border-white/10 pb-4">
-                5. Comentarios Abiertos (Opcionales)
+                4. Comentarios Abiertos (Opcionales)
               </h2>
 
               <div className="space-y-8">

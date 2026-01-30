@@ -570,7 +570,7 @@ export default function LandingPageClient() {
             </div>
             <div className="flex flex-1 justify-center relative">
               <Image
-                src="/images/condominios/phone-app.png"
+                src="/images/redsocial/phoneapp.png"
                 alt="Panel de información"
                 width={663}
                 height={642}
