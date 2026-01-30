@@ -2,7 +2,6 @@
 
 import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
-import { Helmet } from "react-helmet-async";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { CircleDollarSign, Users, ShieldCheck } from "lucide-react";
@@ -14,30 +13,6 @@ export default function AdministrationPage() {
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <Helmet>
-        <title>Administración de Condominios | Condaty</title>
-        <meta
-          name="description"
-          content="Panel administrativo para gestionar usuarios, ingresos, egresos y documentación del condominio."
-        />
-        <meta
-          property="og:title"
-          content="Administración de Condominios | Condaty"
-        />
-        <meta
-          property="og:description"
-          content="Panel administrativo para gestionar usuarios, ingresos, egresos y documentación del condominio."
-        />
-        <meta
-          property="og:image"
-          content="https://www.condaty.com/images/condominios/laptop-home.png"
-        />
-        <meta
-          property="og:url"
-          content="https://www.condaty.com/administration"
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <Suspense fallback={null}>
         <ContactModal
           isOpen={isContactModalOpen}

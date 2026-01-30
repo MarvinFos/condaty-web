@@ -2,7 +2,6 @@
 
 import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
-import { Helmet } from "react-helmet-async";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { CircleDollarSign, Users, ShieldCheck } from "lucide-react";
@@ -14,24 +13,6 @@ export default function ResidentesPage() {
 
   return (
     <div className="min-h-screen bg-[#191919] text-white">
-      <Helmet>
-        <title>Residentes | Condaty</title>
-        <meta
-          name="description"
-          content="App para residentes con pagos, accesos, comunicación y comodidad en el condominio."
-        />
-        <meta property="og:title" content="Residentes | Condaty" />
-        <meta
-          property="og:description"
-          content="App para residentes con pagos, accesos, comunicación y comodidad en el condominio."
-        />
-        <meta
-          property="og:image"
-          content="https://www.condaty.com/images/condominios/family.png"
-        />
-        <meta property="og:url" content="https://www.condaty.com/residents" />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <Suspense fallback={null}>
         <ContactModal
           isOpen={isContactModalOpen}
