@@ -167,7 +167,7 @@ export default function LandingPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#191919] via-[#191919]/80 to-[#191919]" />
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 sm:px-10 flex flex-col items-center">
+          <div className="relative z-[45] mx-auto w-full max-w-[1440px] px-6 sm:px-10 flex flex-col items-center">
             <div className="flex flex-col items-center gap-8 text-center">
               <div className="flex flex-col items-center gap-3">
                 <h1 className="text-[38px] font-semibold leading-[1.1] sm:text-[60px]">

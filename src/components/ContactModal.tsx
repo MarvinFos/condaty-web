@@ -143,7 +143,7 @@ export default function ContactModal({
                 src="/images/condaty-edif.png"
                 alt="Edificio Condaty"
                 fill
-                className="object-cover"
+                className="object-cover object-[center_100%]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#191919]" />
             </div>

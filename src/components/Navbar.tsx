@@ -23,7 +23,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 flex w-full justify-center bg-[#191919] border-b border-[#535353]">
+    <header className="sticky top-0 z-50 flex w-full justify-center bg-[#191919]/80 backdrop-blur-md border-b border-white/10 supports-[backdrop-filter]:bg-[#191919]/60">
       <Suspense fallback={null}>
         <ContactModal
           isOpen={isContactModalOpen}
@@ -108,7 +108,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="absolute top-[61px] left-0 w-full bg-[#191919] border-b border-[#535353] md:hidden flex flex-col p-6 gap-4 shadow-xl h-[calc(100vh-61px)] overflow-y-auto">
+        <div className="absolute top-[61px] left-0 w-full bg-[#191919]/90 backdrop-blur-md border-b border-white/10 md:hidden flex flex-col p-6 gap-4 shadow-xl h-[calc(100vh-61px)] overflow-y-auto">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
