@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "condaty",
   ],
   icons: {
-    icon: "/images/logo_condaty.png",
+    icon: "/images/logo.svg",
   },
   openGraph: {
     title: "Condaty | Software de gestión de condominios",
