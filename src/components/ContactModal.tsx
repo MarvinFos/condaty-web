@@ -119,7 +119,7 @@ export default function ContactModal({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div className="fixed inset-0 z-[100] grid place-items-center px-4 py-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -135,6 +135,7 @@ export default function ContactModal({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
+            onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-[500px] overflow-hidden rounded-[32px] border border-[#00e38e]/30 bg-[#191919] shadow-[0_0_50px_rgba(0,227,142,0.1)]"
           >
             {/* Header Image */}
@@ -143,7 +144,7 @@ export default function ContactModal({
                 src="/images/condaty-edif.png"
                 alt="Edificio Condaty"
                 fill
-                className="object-cover object-[center_100%]"
+                className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#191919]" />
             </div>
