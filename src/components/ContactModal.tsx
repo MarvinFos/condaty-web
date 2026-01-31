@@ -10,7 +10,7 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface ContactModalProps {
@@ -18,6 +18,8 @@ interface ContactModalProps {
   onClose: () => void;
   variant?: "contact" | "exit";
 }
+
+import { createPortal } from "react-dom";
 
 export default function ContactModal({
   isOpen,
@@ -34,6 +36,11 @@ export default function ContactModal({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,20 +123,20 @@ export default function ContactModal({
     },
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] grid place-items-center px-4 py-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto py-10 px-4">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           />
-
-          
 
           {/* Modal */}
           <motion.div
@@ -138,15 +145,15 @@ export default function ContactModal({
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[500px] overflow-hidden rounded-[32px] border border-[#00e38e]/30 bg-[#191919] shadow-[0_0_50px_rgba(0,227,142,0.1)]"
+            className="relative w-full max-w-[500px] my-auto rounded-[32px] border border-[#00e38e]/30 bg-[#191919] shadow-[0_0_50px_rgba(0,227,142,0.1)] flex flex-col"
           >
             {/* Header Image */}
-            <div className="relative h-40 w-full">
+            <div className="relative h-40 w-full shrink-0">
               <Image
                 src="/images/condaty-edif.png"
                 alt="Edificio Condaty"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center rounded-t-[32px]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#191919]" />
             </div>
@@ -354,6 +361,7 @@ export default function ContactModal({
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

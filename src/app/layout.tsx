@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ModalProvider } from "@/context/ModalContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.condaty.com"),
@@ -45,7 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <ModalProvider>{children}</ModalProvider>
+      </body>
     </html>
   );
 }

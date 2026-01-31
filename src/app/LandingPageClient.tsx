@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
@@ -32,40 +32,29 @@ import {
   Cloud,
   Upload,
 } from "lucide-react";
-
-const ContactModal = lazy(() => import("../components/ContactModal"));
+import { useModal } from "@/context/ModalContext";
 
 export default function LandingPageClient() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [modalVariant, setModalVariant] = useState<"contact" | "exit">(
-    "contact",
-  );
+  const { openContactModal, openDownloadModal } = useModal();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setModalVariant("exit");
-      setIsContactModalOpen(true);
+      openContactModal("exit");
     }, 120000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [openContactModal]);
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
-        setModalVariant("exit");
-        setIsContactModalOpen(true);
+        openDownloadModal("Antes de que te vayas...");
       }
     };
 
     document.addEventListener("mouseleave", handleMouseLeave);
     return () => document.removeEventListener("mouseleave", handleMouseLeave);
-  }, []);
-
-  const openContactModal = () => {
-    setModalVariant("contact");
-    setIsContactModalOpen(true);
-  };
+  }, [openDownloadModal]);
 
   const structuredData = [
     {
@@ -118,11 +107,7 @@ export default function LandingPageClient() {
   return (
     <div className="min-h-screen bg-[#191919] text-white">
       <Suspense fallback={null}>
-        <ContactModal
-          isOpen={isContactModalOpen}
-          onClose={() => setIsContactModalOpen(false)}
-          variant={modalVariant}
-        />
+        {/* Modals are now handled by ModalContext in layout */}
       </Suspense>
       <Navbar />
       <script
@@ -156,14 +141,14 @@ export default function LandingPageClient() {
                 </span>
               </div>
               <div className="flex gap-4">
-                <div
-                  onClick={openContactModal}
+                <button
+                  onClick={() => openContactModal("contact")}
                   className="relative z-50 rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors shadow-[0_0_20px_rgba(0,227,142,0.4)]"
                 >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Contáctanos
                   </span>
-                </div>
+                </button>
               </div>
             </div>
 
@@ -284,27 +269,29 @@ export default function LandingPageClient() {
                   highlight: "Chat interno",
                   color: "#06b6d4",
                 },
-              ].map((card, index) => (
+              ].map((card) => (
                 <div
-                  key={index}
+                  key={card.highlight}
                   className="group flex w-full max-w-[280px] flex-col gap-4 rounded-2xl border bg-[#111] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:brightness-110"
                   style={{
                     boxShadow: `0 0 25px ${card.color}30`,
                     borderColor: card.color,
                   }}
                 >
-                  <card.icon
-                    className="h-10 w-10"
-                    style={{
-                      color: card.color,
-                      filter: `drop-shadow(0 0 12px ${card.color})`,
-                    }}
-                  />
-                  <p className="text-[15px] leading-relaxed text-gray-300">
-                    <span className="font-bold" style={{ color: card.color }}>
-                      {card.highlight}
-                    </span>{" "}
-                    {card.text.replace(card.highlight, "").trim()}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#191919]">
+                    <card.icon size={24} style={{ color: card.color }} />
+                  </div>
+                  <p className="text-[16px] text-gray-300 leading-relaxed">
+                    {card.text.split(card.highlight).map((part, i, arr) => (
+                      <span key={i}>
+                        {part}
+                        {i < arr.length - 1 && (
+                          <span className="font-semibold text-white">
+                            {card.highlight}
+                          </span>
+                        )}
+                      </span>
+                    ))}
                   </p>
                 </div>
               ))}
@@ -515,10 +502,11 @@ export default function LandingPageClient() {
           <div className="flex h-full flex-col justify-center gap-10 lg:h-[520px] lg:flex-row">
             <div className="relative flex w-full lg:w-[520px] items-end justify-center rounded-[28px] border border-[#00e38e] bg-[#0f2b22] overflow-hidden">
               <Image
-                src="/images/condominios/book.png"
+                src="/images/condominios/book.gif"
                 alt="3 Plantillas de cobranza"
                 fill
                 className="object-cover"
+                unoptimized
               />
             </div>
             <div className="flex w-full lg:w-[720px] items-center justify-center rounded-[28px] border border-[#323232] bg-[#222222] p-7">
@@ -532,16 +520,14 @@ export default function LandingPageClient() {
                     Descarga nuestro PDF haciendo click abajo
                   </span>
                 </div>
-                <a
-                  href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
+                  onClick={() => openDownloadModal()}
                   className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
                 >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Descargar PDF
                   </span>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -559,14 +545,14 @@ export default function LandingPageClient() {
                   lugar.
                 </span>
               </div>
-              <div
-                onClick={() => setIsContactModalOpen(true)}
+              <button
+                onClick={() => openContactModal("contact")}
                 className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
               >
                 <span className="text-[16px] font-semibold text-[#191919]">
                   Contáctanos
                 </span>
-              </div>
+              </button>
             </div>
             <div className="flex flex-1 justify-center relative">
               <Image

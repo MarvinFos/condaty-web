@@ -101,7 +101,7 @@ export default function ResidentesPage() {
               />
               <div className="relative z-10 w-full max-w-[750px]">
                 <Image
-                  src="/images/redsocial/phone-app.png"
+                  src="/images/redsocial/phoneapp.png"
                   alt="App en teléfonos móviles"
                   width={750}
                   height={750}

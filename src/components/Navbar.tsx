@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-
-const ContactModal = lazy(() => import("./ContactModal"));
+import { useModal } from "@/context/ModalContext";
 
 export default function Navbar() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const { openContactModal, openDownloadModal } = useModal();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -24,13 +23,6 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 flex w-full justify-center bg-[#191919]/80 backdrop-blur-md border-b border-white/10 supports-[backdrop-filter]:bg-[#191919]/60">
-      <Suspense fallback={null}>
-        <ContactModal
-          isOpen={isContactModalOpen}
-          onClose={() => setIsContactModalOpen(false)}
-          variant="contact"
-        />
-      </Suspense>
       <div className="flex w-full justify-between items-center px-6 md:px-10 lg:px-20 xl:px-36 py-2 md:py-1">
         <div className="flex h-[60px] md:h-[82px] grow items-center justify-between">
           <Link href="/">
@@ -61,11 +53,9 @@ export default function Navbar() {
               ))}
             </nav>
             <div className="flex items-center gap-3">
-              <a
-                href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative h-14 lg:h-[85px] -mt-6 hover:opacity-90 transition-opacity duration-200 flex items-center"
+              <div
+                onClick={() => openDownloadModal()}
+                className="relative h-14 lg:h-[85px] -mt-6 hover:opacity-90 transition-opacity duration-200 flex items-center cursor-pointer"
               >
                 <Image
                   src="/images/condominios/btn-recursos.png"
@@ -74,7 +64,7 @@ export default function Navbar() {
                   height={85}
                   className="h-full w-auto object-contain"
                 />
-              </a>
+              </div>
               <a
                 href="https://admin.condaty.com/"
                 target="_blank"
@@ -86,7 +76,7 @@ export default function Navbar() {
                 </span>
               </a>
               <button
-                onClick={() => setIsContactModalOpen(true)}
+                onClick={() => openContactModal("contact")}
                 className="flex h-10 lg:h-12 flex-col items-center justify-center gap-2.5 rounded-[10px] border border-solid border-[#00e38e] bg-[#00e38e] px-4 lg:px-6 hover:bg-[#00c97e] transition-colors duration-200"
               >
                 <span className="text-center text-xs lg:text-[16px] font-semibold text-[#191919]">
@@ -127,12 +117,12 @@ export default function Navbar() {
             ))}
           </nav>
           <div className="flex flex-col gap-3 mt-4">
-            <a
-              href="https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative h-20 -mt-4 flex items-center justify-center hover:opacity-90 transition-opacity duration-200"
-              onClick={() => setIsMenuOpen(false)}
+            <div
+              className="relative h-20 -mt-4 flex items-center justify-center hover:opacity-90 transition-opacity duration-200 cursor-pointer"
+              onClick={() => {
+                openDownloadModal();
+                setIsMenuOpen(false);
+              }}
             >
               <Image
                 src="/images/condominios/btn-recursos.png"
@@ -141,7 +131,7 @@ export default function Navbar() {
                 height={80}
                 className="h-full w-auto object-contain"
               />
-            </a>
+            </div>
             <a
               href="https://admin.condaty.com/"
               target="_blank"
@@ -155,7 +145,7 @@ export default function Navbar() {
             </a>
             <button
               onClick={() => {
-                setIsContactModalOpen(true);
+                openContactModal("contact");
                 setIsMenuOpen(false);
               }}
               className="flex h-12 items-center justify-center rounded-[10px] border border-solid border-[#00e38e] bg-[#00e38e] px-6"
