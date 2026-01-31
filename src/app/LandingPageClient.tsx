@@ -2,6 +2,7 @@
 
 import { useEffect, Suspense } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -38,17 +39,25 @@ export default function LandingPageClient() {
   const { openContactModal, openDownloadModal } = useModal();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      openContactModal("exit");
-    }, 120000);
+    const hasSeenTimer = sessionStorage.getItem("hasSeenTimer");
+    if (hasSeenTimer) return;
 
-    return () => clearInterval(interval);
+    const timer = setTimeout(() => {
+      openContactModal("exit");
+      sessionStorage.setItem("hasSeenTimer", "true");
+    }, 180000);
+
+    return () => clearTimeout(timer);
   }, [openContactModal]);
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
-        openDownloadModal("Antes de que te vayas...");
+        const hasSeenExit = sessionStorage.getItem("hasSeenExit");
+        if (!hasSeenExit) {
+          openDownloadModal("Antes de que te vayas...");
+          sessionStorage.setItem("hasSeenExit", "true");
+        }
       }
     };
 
@@ -520,14 +529,14 @@ export default function LandingPageClient() {
                     Descarga nuestro PDF haciendo click abajo
                   </span>
                 </div>
-                <div
-                  onClick={() => openDownloadModal()}
+                <Link
+                  href="/book-download"
                   className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
                 >
                   <span className="text-[16px] font-semibold text-[#191919]">
                     Descargar PDF
                   </span>
-                </div>
+                </Link>
               </div>
             </div>
           </div>

@@ -53,8 +53,8 @@ export default function Navbar() {
               ))}
             </nav>
             <div className="flex items-center gap-3">
-              <div
-                onClick={() => openDownloadModal()}
+              <Link
+                href="/book-download"
                 className="relative h-14 lg:h-[85px] -mt-6 hover:opacity-90 transition-opacity duration-200 flex items-center cursor-pointer"
               >
                 <Image
@@ -64,7 +64,7 @@ export default function Navbar() {
                   height={85}
                   className="h-full w-auto object-contain"
                 />
-              </div>
+              </Link>
               <a
                 href="https://admin.condaty.com/"
                 target="_blank"
