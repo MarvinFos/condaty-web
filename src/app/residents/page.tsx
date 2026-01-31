@@ -58,15 +58,30 @@ export default function ResidentesPage() {
               </div>
 
               {/* Right Image (Family) */}
-              <div className="relative w-full max-w-[600px] z-10">
-                <Image
-                  src="/images/condominios/family.png"
-                  alt="Familia disfrutando en el condominio"
-                  width={600}
-                  height={400}
-                  className="h-auto w-full object-cover rounded-[32px] drop-shadow-2xl"
-                  priority
-                />
+              <div className="relative w-full max-w-[600px] z-10 group">
+                <div className="relative w-full rounded-[32px] overflow-hidden">
+                  {/* Image */}
+                  <Image
+                    src="/images/family.png"
+                    alt="Familia disfrutando en el condominio"
+                    width={600}
+                    height={400}
+                    className="h-auto w-full object-cover transition-opacity duration-500"
+                    priority
+                  />
+                  {/* Video on Hover */}
+                  <video
+                    src="/images/family-video.mp4"
+                    className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                  {/* Gradient Mask for Transparent Borders */}
+                  <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_transparent_30%,_#191919_100%)] opacity-90" />
+                </div>
+
                 {/* Background Glow Effect behind image */}
                 <div
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-[80px]"
