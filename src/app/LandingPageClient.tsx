@@ -102,12 +102,12 @@ export default function LandingPageClient() {
         {
           "@type": "SiteNavigationElement",
           name: "Políticas de privacidad",
-          url: "https://www.condaty.com/privacy-policy",
+          url: "https://www.condaty.com/terminos",
         },
         {
           "@type": "SiteNavigationElement",
           name: "Eliminar mi cuenta",
-          url: "https://www.condaty.com/delete-account",
+          url: "https://www.condaty.com/eliminar-cuenta",
         },
       ],
     },

@@ -25,13 +25,13 @@ export default function Footer() {
             </span>
             <span className="text-[16px] text-white">Preguntas frecuentes</span>
             <Link
-              href="/privacy-policy"
+              href="/terminos"
               className="text-[16px] text-white hover:text-[#00e38e] transition-colors cursor-pointer"
             >
               Políticas de privacidad
             </Link>
             <Link
-              href="/delete-account"
+              href="/eliminar-cuenta"
               className="text-[16px] text-white hover:text-[#00e38e] transition-colors cursor-pointer"
             >
               Eliminar mi cuenta

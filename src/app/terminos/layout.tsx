@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Eliminar cuenta",
+  title: "Política de privacidad",
   description:
-    "Instrucciones para eliminar tu cuenta y datos personales en Condaty.",
+    "Política de privacidad de Condaty para el tratamiento de datos personales.",
   openGraph: {
-    title: "Eliminar cuenta",
+    title: "Política de privacidad",
     description:
-      "Instrucciones para eliminar tu cuenta y datos personales en Condaty.",
-    url: "https://www.condaty.com/delete-account",
+      "Política de privacidad de Condaty para el tratamiento de datos personales.",
+    url: "https://www.condaty.com/terminos",
     images: [
       {
         url: "/images/logo_condaty.png",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DeleteAccountLayout({
+export default function PrivacyPolicyLayout({
   children,
 }: {
   children: React.ReactNode;

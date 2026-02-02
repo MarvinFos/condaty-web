@@ -28,13 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://www.condaty.com/privacy-policy",
+      url: "https://www.condaty.com/terminos",
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: "https://www.condaty.com/delete-account",
+      url: "https://www.condaty.com/eliminar-cuenta",
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
