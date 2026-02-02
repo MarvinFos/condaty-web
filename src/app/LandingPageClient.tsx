@@ -39,13 +39,13 @@ export default function LandingPageClient() {
   const { openContactModal, openDownloadModal } = useModal();
 
   useEffect(() => {
-    const hasSeenTimer = sessionStorage.getItem("hasSeenTimer");
+    const hasSeenTimer = localStorage.getItem("hasSeenTimer");
     if (hasSeenTimer) return;
 
     const timer = setTimeout(() => {
       openContactModal("exit");
-      sessionStorage.setItem("hasSeenTimer", "true");
-    }, 180000);
+      localStorage.setItem("hasSeenTimer", "true");
+    }, 600000); // 10 minutes
 
     return () => clearTimeout(timer);
   }, [openContactModal]);

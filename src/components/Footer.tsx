@@ -1,22 +1,14 @@
 "use client";
 
-import { useState, lazy, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const ContactModal = lazy(() => import("./ContactModal"));
+import { useModal } from "@/context/ModalContext";
 
 export default function Footer() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const { openContactModal } = useModal();
 
   return (
     <footer className="w-full border-t border-[#535353] bg-[#191919]">
-      <Suspense fallback={null}>
-        <ContactModal
-          isOpen={isContactModalOpen}
-          onClose={() => setIsContactModalOpen(false)}
-        />
-      </Suspense>
       <div className="mx-auto w-full max-w-[1440px] px-6 py-12 sm:px-10">
         <div className="grid gap-12 md:grid-cols-3">
           <div className="flex flex-col gap-2">
@@ -36,7 +28,12 @@ export default function Footer() {
             >
               Eliminar mi cuenta
             </Link>
-            <span className="text-[16px] text-white">Contactar</span>
+            <button
+              onClick={() => openContactModal("contact")}
+              className="text-[16px] text-white hover:text-[#00e38e] transition-colors cursor-pointer text-left"
+            >
+              Contactar
+            </button>
           </div>
           <div className="flex flex-col gap-2">
             <span className="text-[14px] font-medium text-[#00e38e]">
@@ -117,6 +114,14 @@ export default function Footer() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Copyright Section */}
+        <div className="mt-6 border-t border-white/10 pt-4 flex flex-col items-center justify-between gap-4 text-center sm:flex-row">
+          <p className="text-sm text-gray-400">
+            © 2026 Condaty. Todos los derechos reservados.
+          </p>
+          <p className="text-sm text-gray-500">Powered by FOS Technologies</p>
         </div>
       </div>
     </footer>
