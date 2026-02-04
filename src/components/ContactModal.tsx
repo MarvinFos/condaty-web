@@ -64,6 +64,10 @@ export default function ContactModal({
         );
       } else {
         console.log("Formulario enviado con éxito:", data);
+
+        // Mark as submitted to prevent future modals
+        localStorage.setItem("hasSubmittedForm", "true");
+
         setIsSuccess(true);
         setFormData({
           name: "",

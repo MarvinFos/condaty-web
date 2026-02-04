@@ -39,22 +39,12 @@ export default function LandingPageClient() {
   const { openContactModal, openDownloadModal } = useModal();
 
   useEffect(() => {
-    const hasSeenTimer = localStorage.getItem("hasSeenTimer");
-    if (hasSeenTimer) return;
-
-    const timer = setTimeout(() => {
-      openContactModal("exit");
-      localStorage.setItem("hasSeenTimer", "true");
-    }, 600000); // 10 minutes
-
-    return () => clearTimeout(timer);
-  }, [openContactModal]);
-
-  useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
         const hasSeenExit = sessionStorage.getItem("hasSeenExit");
-        if (!hasSeenExit) {
+        const hasSubmittedForm = localStorage.getItem("hasSubmittedForm");
+
+        if (!hasSeenExit && !hasSubmittedForm) {
           openDownloadModal("Antes de que te vayas...");
           sessionStorage.setItem("hasSeenExit", "true");
         }
@@ -465,7 +455,7 @@ export default function LandingPageClient() {
 
           <div className="mt-12 flex w-full overflow-hidden">
             <motion.div
-              className="flex gap-16 md:gap-24 px-6 min-w-max"
+              className="flex items-center gap-16 md:gap-24 px-6 min-w-max"
               animate={{ x: "-50%" }}
               transition={{
                 ease: "linear",
@@ -493,7 +483,11 @@ export default function LandingPageClient() {
               ].map((logo, index) => (
                 <div
                   key={index}
-                  className="relative h-[42px] w-[146px] flex-shrink-0"
+                  className={`relative flex-shrink-0 ${
+                    logo === "logo-hacienda-del-urubo.png"
+                      ? "h-[75px] w-[200px]"
+                      : "h-[42px] w-[146px]"
+                  }`}
                 >
                   <Image
                     src={`/images/condominios/${logo}`}

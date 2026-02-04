@@ -74,6 +74,10 @@ export default function BookDownloadPage() {
         );
       } else {
         console.log("Formulario enviado con éxito:", data);
+        
+        // Mark as submitted to prevent future modals
+        localStorage.setItem("hasSubmittedForm", "true");
+
         window.open(
           "https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view",
           "_blank",
