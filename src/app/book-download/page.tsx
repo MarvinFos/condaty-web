@@ -37,6 +37,8 @@ export default function BookDownloadPage() {
   });
   const [isSubmitting2, setIsSubmitting2] = useState(false);
   const [isSuccess2, setIsSuccess2] = useState(false);
+  const [showForm1, setShowForm1] = useState(false);
+  const [showForm2, setShowForm2] = useState(false);
 
   const roles = [
     "Administrador",
@@ -279,6 +281,26 @@ export default function BookDownloadPage() {
     </form>
   );
 
+  const renderInitialState = (onDownload: () => void) => (
+    <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[300px]">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-[28px] font-semibold text-white">
+          Descarga gratis
+        </h3>
+        <p className="text-[16px] text-gray-400">
+          Completa tus datos para recibir el eBook.
+        </p>
+      </div>
+      <button
+        onClick={onDownload}
+        className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-semibold text-[#191919] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.4)] active:scale-[0.98] flex items-center justify-center gap-2"
+      >
+        <Download size={20} />
+        Descargar eBook
+      </button>
+    </div>
+  );
+
   const renderSuccess = (setIsSuccess: (v: boolean) => void) => (
     <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[400px]">
       <motion.div
@@ -361,6 +383,8 @@ export default function BookDownloadPage() {
                 <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
                   {isSuccess2 ? (
                     renderSuccess(setIsSuccess2)
+                  ) : !showForm2 ? (
+                    renderInitialState(() => setShowForm2(true))
                   ) : (
                     <div className="flex flex-col gap-6">
                       <div className="text-left">
@@ -434,6 +458,8 @@ export default function BookDownloadPage() {
                 <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
                   {isSuccess1 ? (
                     renderSuccess(setIsSuccess1)
+                  ) : !showForm1 ? (
+                    renderInitialState(() => setShowForm1(true))
                   ) : (
                     <div className="flex flex-col gap-6">
                       <div className="text-left">
