@@ -27,19 +27,6 @@ export default function BookDownloadPage() {
   const [isSubmitting1, setIsSubmitting1] = useState(false);
   const [isSuccess1, setIsSuccess1] = useState(false);
 
-  // State for Book 2 (Previniendo la MORA)
-  const [formData2, setFormData2] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    role: "",
-    city: "",
-  });
-  const [isSubmitting2, setIsSubmitting2] = useState(false);
-  const [isSuccess2, setIsSuccess2] = useState(false);
-  const [showForm1, setShowForm1] = useState(false);
-  const [showForm2, setShowForm2] = useState(false);
-
   const roles = [
     "Administrador",
     "Miembro de Comité",
@@ -64,19 +51,10 @@ export default function BookDownloadPage() {
     "Tarija",
   ];
 
-  const handleSubmit = async (
-    e: React.FormEvent,
-    bookType: "book1" | "book2",
-  ) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const isBook1 = bookType === "book1";
-    const currentFormData = isBook1 ? formData1 : formData2;
-    const setSubmitting = isBook1 ? setIsSubmitting1 : setIsSubmitting2;
-    const setSuccess = isBook1 ? setIsSuccess1 : setIsSuccess2;
-    const setForm = isBook1 ? setFormData1 : setFormData2;
-
-    setSubmitting(true);
+    setIsSubmitting1(true);
 
     try {
       const response = await fetch("/api/contact", {
@@ -84,7 +62,7 @@ export default function BookDownloadPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(currentFormData),
+        body: JSON.stringify(formData1),
       });
 
       const data = await response.json();
@@ -100,13 +78,12 @@ export default function BookDownloadPage() {
         // Mark as submitted to prevent future modals
         localStorage.setItem("hasSubmittedForm", "true");
 
-        const downloadUrl = isBook1
-          ? "https://drive.google.com/file/d/1Keu9drsekf4pGJiT7SO5ibuybY5Lv6fW/view?usp=sharing"
-          : "https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view";
+        const downloadUrl =
+          "https://drive.google.com/file/d/1Keu9drsekf4pGJiT7SO5ibuybY5Lv6fW/view?usp=sharing";
 
         window.open(downloadUrl, "_blank");
-        setSuccess(true);
-        setForm({
+        setIsSuccess1(true);
+        setFormData1({
           name: "",
           phone: "",
           email: "",
@@ -118,7 +95,7 @@ export default function BookDownloadPage() {
       console.error("Error de red:", error);
       alert("Error de conexión. Por favor verifica tu internet.");
     } finally {
-      setSubmitting(false);
+      setIsSubmitting1(false);
     }
   };
 
@@ -126,12 +103,8 @@ export default function BookDownloadPage() {
     formData: typeof formData1,
     setFormData: typeof setFormData1,
     isSubmitting: boolean,
-    bookType: "book1" | "book2",
   ) => (
-    <form
-      onSubmit={(e) => handleSubmit(e, bookType)}
-      className="flex flex-col gap-4"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       {/* Nombre */}
       <div className="flex flex-col gap-2">
         <label className="ml-2 text-sm font-medium text-gray-300">
@@ -281,26 +254,6 @@ export default function BookDownloadPage() {
     </form>
   );
 
-  const renderInitialState = (onDownload: () => void) => (
-    <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[300px]">
-      <div className="flex flex-col gap-2">
-        <h3 className="text-[28px] font-semibold text-white">
-          Descarga gratis
-        </h3>
-        <p className="text-[16px] text-gray-400">
-          Completa tus datos para recibir el eBook.
-        </p>
-      </div>
-      <button
-        onClick={onDownload}
-        className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-semibold text-[#191919] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.4)] active:scale-[0.98] flex items-center justify-center gap-2"
-      >
-        <Download size={20} />
-        Descargar eBook
-      </button>
-    </div>
-  );
-
   const renderSuccess = (setIsSuccess: (v: boolean) => void) => (
     <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[400px]">
       <motion.div
@@ -360,68 +313,6 @@ export default function BookDownloadPage() {
       {/* Main Content */}
       <div className="px-6 py-10 sm:px-10 lg:px-20 xl:px-36">
         <div className="mx-auto max-w-6xl space-y-32">
-          {/* BOOK 2: Previniendo la MORA (Nuevo) - Layout Derecha */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: Intro Text + Form */}
-            <div className="flex flex-col gap-10">
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  Previniendo la MORA en Condominios
-                </h2>
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  Este eBook es una herramienta práctica diseñada para
-                  administradores y directorios que buscan soluciones reales a
-                  la morosidad. A través de la experiencia de Moisés Uzieda
-                  Rocha, aprenderás a implementar procesos claros de
-                  transparencia y comunicación para asegurar la liquidez de tu
-                  condominio.
-                </p>
-              </div>
-
-              {/* Form Book 2 */}
-              <div className="relative">
-                <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
-                  {isSuccess2 ? (
-                    renderSuccess(setIsSuccess2)
-                  ) : !showForm2 ? (
-                    renderInitialState(() => setShowForm2(true))
-                  ) : (
-                    <div className="flex flex-col gap-6">
-                      <div className="text-left">
-                        <h2 className="text-[24px] font-semibold leading-tight text-white">
-                          Descarga el eBook gratis
-                        </h2>
-                        <p className="mt-2 text-[15px] text-gray-400">
-                          Completa el formulario para acceder inmediatamente.
-                        </p>
-                      </div>
-                      {renderForm(
-                        formData2,
-                        setFormData2,
-                        isSubmitting2,
-                        "book2",
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Book Image */}
-            <div className="relative w-full flex justify-center lg:justify-end order-first lg:order-last">
-              <div className="relative w-[300px] h-[400px] sm:w-[400px] sm:h-[500px]">
-                <div className="absolute inset-0 bg-[#00e38e]/20 blur-3xl rounded-full opacity-40" />
-                <Image
-                  src="/images/condominios/book2.png"
-                  alt="Previniendo la MORA"
-                  fill
-                  className="object-contain drop-shadow-2xl relative z-10"
-                />
-                <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_center,transparent_40%,#191919_100%)] pointer-events-none" />
-              </div>
-            </div>
-          </div>
-
           {/* BOOK 1: Plantillas de Cobranza (Antiguo) - Layout Izquierda */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Book Image */}
@@ -458,8 +349,6 @@ export default function BookDownloadPage() {
                 <div className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur-sm">
                   {isSuccess1 ? (
                     renderSuccess(setIsSuccess1)
-                  ) : !showForm1 ? (
-                    renderInitialState(() => setShowForm1(true))
                   ) : (
                     <div className="flex flex-col gap-6">
                       <div className="text-left">
@@ -470,12 +359,7 @@ export default function BookDownloadPage() {
                           Completa el formulario para acceder inmediatamente.
                         </p>
                       </div>
-                      {renderForm(
-                        formData1,
-                        setFormData1,
-                        isSubmitting1,
-                        "book1",
-                      )}
+                      {renderForm(formData1, setFormData1, isSubmitting1)}
                     </div>
                   )}
                 </div>
