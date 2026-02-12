@@ -68,6 +68,11 @@ export default function ContactModal({
         // Mark as submitted to prevent future modals
         localStorage.setItem("hasSubmittedForm", "true");
 
+        // Track Facebook Pixel 'Contact' event
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq("track", "Contact");
+        }
+
         setIsSuccess(true);
         setFormData({
           name: "",

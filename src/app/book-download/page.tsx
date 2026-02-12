@@ -78,6 +78,11 @@ export default function BookDownloadPage() {
         // Mark as submitted to prevent future modals
         localStorage.setItem("hasSubmittedForm", "true");
 
+        // Track Facebook Pixel 'Lead' event for book download
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq("track", "Lead");
+        }
+
         const downloadUrl =
           "https://drive.google.com/file/d/1Keu9drsekf4pGJiT7SO5ibuybY5Lv6fW/view?usp=sharing";
 

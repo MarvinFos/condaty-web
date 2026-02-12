@@ -70,6 +70,11 @@ export default function DownloadModal({
         // Mark as submitted to prevent future modals
         localStorage.setItem("hasSubmittedForm", "true");
 
+        // Track Facebook Pixel 'Lead' event for book download modal
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq("track", "Lead");
+        }
+
         // 2. Open PDF in new tab
         window.open(
           "https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view",
