@@ -364,7 +364,7 @@ export default function DownloadModal({
             {/* Right Image */}
             <div className="relative w-full md:w-[400px] h-[250px] md:h-auto order-1 md:order-2 bg-[#0f2b22]">
               <Image
-                src="/images/condominios/book.gif"
+                src="/images/condominios/ebook-new.png"
                 alt="Plantillas de cobranza"
                 fill
                 className="object-cover"

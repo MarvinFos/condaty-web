@@ -325,7 +325,7 @@ export default function BookDownloadPage() {
               <div className="relative w-[300px] h-[400px] sm:w-[400px] sm:h-[500px]">
                 <div className="absolute inset-0 bg-[#00e38e]/20 blur-3xl rounded-full opacity-40" />
                 <Image
-                  src="/images/condominios/book.png"
+                  src="/images/condominios/ebook-new.png"
                   alt="Plantillas de Cobranza"
                   fill
                   className="object-contain drop-shadow-2xl relative z-10"
