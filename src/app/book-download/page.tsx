@@ -84,7 +84,7 @@ export default function BookDownloadPage() {
         }
 
         const downloadUrl =
-          "https://drive.google.com/file/d/1Keu9drsekf4pGJiT7SO5ibuybY5Lv6fW/view?usp=sharing";
+          "https://drive.google.com/drive/folders/1HhFYl0OO7GcEQ8Qai3WoxtHrWuBOIlYl?usp=sharing";
 
         window.open(downloadUrl, "_blank");
         setIsSuccess1(true);

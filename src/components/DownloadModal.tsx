@@ -77,7 +77,7 @@ export default function DownloadModal({
 
         // 2. Open PDF in new tab
         window.open(
-          "https://drive.google.com/file/d/1kL3ua0hR53nINtdSgYVvv7IAlmvZJas2/view",
+          "https://drive.google.com/drive/folders/1HhFYl0OO7GcEQ8Qai3WoxtHrWuBOIlYl?usp=sharing",
           "_blank",
         );
 
