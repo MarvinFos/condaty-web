@@ -100,7 +100,7 @@ export default function ContactModal({
     "Miembro de Comité",
     "Junta Directiva",
     "Proveedor",
-    "Condómino/Copropietario",
+    "Residente/Copropietario",
     "Presidente del comité",
     "Inmobiliaria",
     "Conserje/Mayordomo",
