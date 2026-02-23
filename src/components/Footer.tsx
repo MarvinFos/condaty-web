@@ -8,7 +8,7 @@ export default function Footer() {
   const { openContactModal } = useModal();
 
   return (
-    <footer className="w-full border-t border-[#535353] bg-[#191919]">
+    <footer className="relative z-20 w-full border-t border-[#535353] bg-[#191919]">
       <div className="mx-auto w-full max-w-[1440px] px-6 py-12 sm:px-10">
         <div className="grid gap-12 md:grid-cols-3">
           <div className="flex flex-col gap-2">

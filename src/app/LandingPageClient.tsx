@@ -503,7 +503,7 @@ export default function LandingPageClient() {
 
         <section className="w-full max-w-[1440px] bg-[#191919] px-6 py-10 sm:px-10 sm:rounded-t-[40px]">
           <div className="flex h-full flex-col justify-center gap-10 lg:h-[520px] lg:flex-row">
-            <div className="relative flex w-full lg:w-[520px] items-end justify-center rounded-[28px] border border-[#00e38e] bg-[#0f2b22] overflow-hidden">
+            <div className="relative flex w-full h-[320px] sm:h-[380px] lg:h-full lg:w-[520px] items-end justify-center rounded-[28px] border border-[#00e38e] bg-[#0f2b22] overflow-hidden">
               <Image
                 src="/images/condominios/ebook-new.png"
                 alt="3 Plantillas de cobranza"
