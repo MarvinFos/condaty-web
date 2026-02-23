@@ -173,11 +173,11 @@ export default function DownloadModal({
                   </motion.div>
                   <div className="flex flex-col gap-2">
                     <h2 className="text-[28px] font-semibold text-white">
-                      ¡Gracias por descargar!
+                      ¡Listo! Revisa tu correo
                     </h2>
                     <p className="text-[16px] text-gray-400">
-                      El recurso se ha abierto en una nueva pestaña. Si no lo
-                      ves, revisa tu bloqueador de ventanas emergentes.
+                      Te enviamos el enlace del kit a tu email. Si no lo ves,
+                      revisa spam o promociones.
                     </p>
                   </div>
                   <button

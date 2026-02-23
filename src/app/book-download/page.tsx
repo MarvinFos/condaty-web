@@ -13,7 +13,7 @@ import {
   Scale,
   FileText,
   ShieldCheck,
-  Lock
+  Lock,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "../../components/Navbar";
@@ -222,9 +222,7 @@ export default function BookDownloadPage() {
             required
             className="w-full appearance-none rounded-2xl border border-white/10 bg-white/5 py-3 pl-12 pr-4 text-white outline-none transition-all focus:border-[#00e38e]/50 focus:bg-white/10 focus:shadow-[0_0_20px_rgba(0,227,142,0.1)] text-sm"
             value={formData.city}
-            onChange={(e) =>
-              setFormData({ ...formData, city: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
           >
             <option value="" disabled className="bg-[#191919] text-gray-500">
               Seleccionar
@@ -275,10 +273,11 @@ export default function BookDownloadPage() {
       </motion.div>
       <div className="flex flex-col gap-2">
         <h2 className="text-[28px] font-semibold text-white">
-          ¡Gracias por descargar!
+          ¡Listo! Revisa tu correo
         </h2>
         <p className="text-[16px] text-gray-400">
-          El recurso se ha abierto en una nueva pestaña.
+          Te enviamos el enlace del kit a tu email. Si no lo ves, revisa spam o
+          promociones.
         </p>
       </div>
       <button
@@ -293,7 +292,7 @@ export default function BookDownloadPage() {
   return (
     <div className="min-h-screen bg-[#111111] text-white selection:bg-[#00e38e] selection:text-[#191919]">
       <Navbar />
-      
+
       {/* Background decoration */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-[600px]">
@@ -312,33 +311,33 @@ export default function BookDownloadPage() {
 
       <div className="relative z-10 px-6 pt-32 pb-20 sm:px-10 lg:px-20 xl:px-36">
         <div className="mx-auto max-w-7xl">
-          
           {/* Hero Header */}
           <div className="text-center mb-16 space-y-6">
             <span className="inline-block rounded-full bg-[#00e38e]/10 px-4 py-1.5 text-sm font-semibold text-[#00e38e] backdrop-blur-md border border-[#00e38e]/20">
               Material Exclusivo para Administradores
             </span>
             <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl leading-tight max-w-5xl mx-auto">
-              Descarga el Kit de Cobranza y <span className="text-[#00e38e]">Recupera la Mora</span> de tu Condominio
+              Descarga el Kit de Cobranza y{" "}
+              <span className="text-[#00e38e]">Recupera la Mora</span> de tu
+              Condominio
             </h1>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-            
             {/* Left Column: Content & Benefits */}
             <div className="flex flex-col gap-10 lg:sticky lg:top-32">
               {/* Image */}
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-white/10 to-transparent p-1 border border-white/10 shadow-2xl">
-                 <div className="absolute inset-0 bg-[#00e38e]/20 blur-xl opacity-30" />
-                 <div className="relative w-full h-full bg-[#151515] rounded-xl flex items-center justify-center overflow-hidden">
-                    {/* Placeholder for the code/image from reference */}
-                    <Image
-                      src="/images/condominios/ebook-new.png"
-                      alt="Kit de Cobranza"
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                 </div>
+                <div className="absolute inset-0 bg-[#00e38e]/20 blur-xl opacity-30" />
+                <div className="relative w-full h-full bg-[#151515] rounded-xl flex items-center justify-center overflow-hidden">
+                  {/* Placeholder for the code/image from reference */}
+                  <Image
+                    src="/images/condominios/ebook-new.png"
+                    alt="Kit de Cobranza"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
               </div>
 
               <div className="space-y-8">
@@ -347,7 +346,9 @@ export default function BookDownloadPage() {
                     Protege el flujo de caja de tu edificio hoy mismo.
                   </h2>
                   <p className="text-gray-400 text-lg leading-relaxed">
-                    Descarga gratis los 3 documentos legales (editables en Word) que toda administración necesita para cobrar con autoridad y sin destruir relaciones vecinales:
+                    Descarga gratis los 3 documentos legales (editables en Word)
+                    que toda administración necesita para cobrar con autoridad y
+                    sin destruir relaciones vecinales:
                   </p>
                 </div>
 
@@ -360,9 +361,12 @@ export default function BookDownloadPage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white">Aviso de Cobranza</h3>
+                      <h3 className="font-semibold text-white">
+                        Aviso de Cobranza
+                      </h3>
                       <p className="text-sm text-gray-400 mt-1">
-                        El primer toque formal y estructurado para evitar excusas.
+                        El primer toque formal y estructurado para evitar
+                        excusas.
                       </p>
                     </div>
                   </div>
@@ -375,7 +379,9 @@ export default function BookDownloadPage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white">Carta de Mora</h3>
+                      <h3 className="font-semibold text-white">
+                        Carta de Mora
+                      </h3>
                       <p className="text-sm text-gray-400 mt-1">
                         El documento estratégico para negociar acuerdos de pago.
                       </p>
@@ -390,9 +396,12 @@ export default function BookDownloadPage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-white">Intimación Legal</h3>
+                      <h3 className="font-semibold text-white">
+                        Intimación Legal
+                      </h3>
                       <p className="text-sm text-gray-400 mt-1">
-                        Cómo citar el Art. 1509 del Código Civil para &quot;romper la prescripción&quot; de la deuda.
+                        Cómo citar el Art. 1509 del Código Civil para
+                        &quot;romper la prescripción&quot; de la deuda.
                       </p>
                     </div>
                   </div>
@@ -412,21 +421,23 @@ export default function BookDownloadPage() {
                         ¿A dónde te enviamos el Kit?
                       </h2>
                       <p className="text-gray-400 text-sm">
-                        Completa tus datos para recibir el enlace de descarga segura e inmediata.
+                        Completa tus datos para recibir el enlace de descarga
+                        segura e inmediata.
                       </p>
                     </div>
-                    
+
                     {renderForm(formData1, setFormData1, isSubmitting1)}
-                    
+
                     <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mt-4">
                       <Lock size={12} />
-                      <span>100% Seguro. Basado en la normativa boliviana vigente.</span>
+                      <span>
+                        100% Seguro. Basado en la normativa boliviana vigente.
+                      </span>
                     </div>
                   </div>
                 )}
               </div>
             </div>
-
           </div>
         </div>
       </div>

@@ -17,7 +17,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const resendApiKey = process.env.RESEND_API_KEY ?? "re_7wECtHwE_KdHNvBwYH8gaWEwjwQdknF3z";
+    const resendApiKey =
+      process.env.RESEND_API_KEY ?? "re_Yrn6v1zp_Mv1dGgUsSH35YWSMy6UjPwmg";
     if (!resendApiKey) {
       return NextResponse.json(
         { error: "Missing RESEND_API_KEY" },
@@ -28,8 +29,7 @@ export async function POST(request: Request) {
     const resend = new Resend(resendApiKey);
     const bookUrl =
       "https://drive.google.com/drive/folders/1HhFYl0OO7GcEQ8Qai3WoxtHrWuBOIlYl?usp=sharing";
-    const fromEmail =
-      process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "hola@condaty.app";
 
     const html = `
         <div style="background-color:#0f0f0f;padding:32px;font-family:Arial,Helvetica,sans-serif;color:#ffffff;">
