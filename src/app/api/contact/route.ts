@@ -59,6 +59,9 @@ export async function POST(request: Request) {
               </div>
               <p style="margin:0 0 6px 0;color:#b3b3b3;font-size:12px;">Si el botón no funciona, copia y pega este enlace en tu navegador:</p>
               <a href="${bookUrl}" style="color:#00e38e;font-size:12px;word-break:break-all;">${bookUrl}</a>
+              <div style="margin-top:18px;background:#111111;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 14px;color:#b3b3b3;font-size:12px;line-height:1.6;text-align:center;">
+                Si este correo llegó a Spam, por favor márcalo como "No es spam" para recibir futuros mensajes directamente.
+              </div>
               <div style="margin-top:24px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;text-align:center;color:#777777;font-size:12px;">
                 Condaty · Recupera la mora sin perder relaciones
               </div>
@@ -73,6 +76,8 @@ export async function POST(request: Request) {
 Incluye: Aviso de Cobranza, Carta de Mora, Intimación Legal.
 
 Descárgalo aquí: ${bookUrl}
+
+Si este correo llegó a Spam, por favor márcalo como "No es spam" para recibir futuros mensajes directamente.
 
 Si no solicitaste este correo, puedes ignorarlo.`;
     const resendResponse = await resend.emails.send({
