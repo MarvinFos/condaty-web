@@ -17,8 +17,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const resendApiKey =
-      process.env.RESEND_API_KEY ?? "re_Yrn6v1zp_Mv1dGgUsSH35YWSMy6UjPwmg";
+    const resendApiKeyFallback = "re_Yrn6v1zp_Mv1dGgUsSH35YWSMy6UjPwmg";
+    const resendApiKey = process.env.RESEND_API_KEY || resendApiKeyFallback;
+    if (!process.env.RESEND_API_KEY) {
+      console.warn("Missing RESEND_API_KEY, using fallback.");
+    }
     if (!resendApiKey) {
       return NextResponse.json(
         { error: "Missing RESEND_API_KEY" },
@@ -29,9 +32,12 @@ export async function POST(request: Request) {
     const resend = new Resend(resendApiKey);
     const bookUrl =
       "https://drive.google.com/drive/folders/1HhFYl0OO7GcEQ8Qai3WoxtHrWuBOIlYl?usp=sharing";
-    const fromEmail = process.env.RESEND_FROM_EMAIL ?? "hola@condaty.app";
-
-    const html = `
+    const html = `<!DOCTYPE html>
+      <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+        </head>
+        <body>
         <div style="background-color:#0f0f0f;padding:32px;font-family:Arial,Helvetica,sans-serif;color:#ffffff;">
           <div style="max-width:640px;margin:0 auto;background:#151515;border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;">
             <div style="padding:28px 28px 8px 28px;text-align:center;background:linear-gradient(180deg,#111111 0%,#151515 100%);">
@@ -59,12 +65,22 @@ export async function POST(request: Request) {
             </div>
           </div>
         </div>
+        </body>
+      </html>
       `;
+    const text = `Hola ${name}, gracias por solicitar tu Kit de Cobranza.
+
+Incluye: Aviso de Cobranza, Carta de Mora, Intimación Legal.
+
+Descárgalo aquí: ${bookUrl}
+
+Si no solicitaste este correo, puedes ignorarlo.`;
     const resendResponse = await resend.emails.send({
-      from: `Condaty <${fromEmail}>`,
+      from: "Condaty <hola@condaty.app>",
       to: email,
       subject: "Tu Kit de Cobranza está listo",
       html,
+      text,
     });
 
     if (resendResponse.error) {
