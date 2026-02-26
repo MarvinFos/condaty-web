@@ -175,7 +175,7 @@ export default function DownloadModal({
                     <h2 className="text-[28px] font-semibold text-white">
                       ¡Listo! Revisa tu correo
                     </h2>
-                    <p className="text-[16px] text-gray-400">
+                    <p className="text-[18px] text-gray-300">
                       Te enviamos el enlace del kit a tu email. Si no lo ves,
                       revisa spam o promociones.
                     </p>
