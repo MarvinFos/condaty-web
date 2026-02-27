@@ -95,6 +95,40 @@ Si no solicitaste este correo, puedes ignorarlo.`;
       );
     }
 
+    // Baserow Integration
+    const BASEROW_TOKEN = "y81TImlm7Scaq0zSiQdDd3GEgbtSkkm3";
+    const LEADS_TABLE_ID = "819666";
+
+    const baserowPayload = {
+      Name: name,
+      Phone: body.phone || "",
+      Email: email,
+      Role: body.role || "",
+      City: body.city || "",
+      "Dispositivo/Navegador": body.deviceInfo || "Unknown",
+    };
+
+    try {
+      const baserowResponse = await fetch(
+        `https://api.baserow.io/api/database/rows/table/${LEADS_TABLE_ID}/?user_field_names=true`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Token ${BASEROW_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(baserowPayload),
+        },
+      );
+
+      if (!baserowResponse.ok) {
+        const errorData = await baserowResponse.json();
+        console.error("Baserow Error (Leads):", errorData);
+      }
+    } catch (baserowError) {
+      console.error("Baserow connection error:", baserowError);
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Server Error:", error);

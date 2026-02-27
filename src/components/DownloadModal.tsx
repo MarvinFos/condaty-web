@@ -48,13 +48,21 @@ export default function DownloadModal({
     setIsSubmitting(true);
 
     try {
+      // Get device info
+      const deviceInfo =
+        typeof window !== "undefined" ? navigator.userAgent : "Unknown";
+
       // 1. Submit form data
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          deviceInfo,
+          source: "book-download",
+        }),
       });
 
       const data = await response.json();
@@ -74,12 +82,6 @@ export default function DownloadModal({
         if (typeof window !== "undefined" && (window as any).fbq) {
           (window as any).fbq("track", "Lead");
         }
-
-        // 2. Open PDF in new tab
-        window.open(
-          "https://drive.google.com/drive/folders/1HhFYl0OO7GcEQ8Qai3WoxtHrWuBOIlYl?usp=sharing",
-          "_blank",
-        );
 
         setIsSuccess(true);
         setFormData({
@@ -151,6 +153,12 @@ export default function DownloadModal({
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-[900px] my-auto rounded-[32px] border border-[#00e38e]/30 bg-[#191919] shadow-[0_0_50px_rgba(0,227,142,0.1)] flex flex-col md:flex-row overflow-hidden"
           >
+            {isSuccess && (
+              <>
+                <div className="absolute inset-0 bg-[url('/images/condaty-edif.png')] bg-cover bg-center opacity-40" />
+                <div className="absolute inset-0 bg-[#111111]/80" />
+              </>
+            )}
             {/* Close Button */}
             <button
               onClick={handleClose}
@@ -162,30 +170,62 @@ export default function DownloadModal({
             {/* Left Content (Form) */}
             <div className="flex-1 p-8 md:p-10 order-2 md:order-1">
               {isSuccess ? (
-                <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center">
+                <div className="relative z-10 flex flex-col items-center gap-6 py-8 text-center h-full justify-center">
                   <motion.div
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", duration: 0.8, bounce: 0.5 }}
-                    className="rounded-full bg-[#00e38e]/10 p-4"
+                    transition={{
+                      type: "spring",
+                      duration: 0.8,
+                      bounce: 0.5,
+                    }}
+                    className="rounded-full bg-[#00e38e]/20 p-4 shadow-[0_0_30px_rgba(0,227,142,0.25)]"
                   >
                     <CheckCircle2 size={64} className="text-[#00e38e]" />
                   </motion.div>
-                  <div className="flex flex-col gap-2">
-                    <h2 className="text-[28px] font-semibold text-white">
-                      ¡Listo! Revisa tu correo
+                  <div className="flex flex-col gap-5 w-full">
+                    <h2 className="text-[28px] font-bold text-white leading-tight">
+                      ¡Excelente! Tu Kit está en camino.
                     </h2>
-                    <p className="text-[18px] text-gray-300">
-                      Te enviamos el enlace del kit a tu email. Si no lo ves,
-                      revisa spam o promociones.
-                    </p>
+                    <div className="flex flex-col gap-4 text-left">
+                      <div className="rounded-2xl border border-white/15 bg-[#2a2a2a]/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-[#00e38e] text-[#00e38e] text-sm font-bold">
+                            1
+                          </div>
+                          <p className="text-sm text-white">
+                            Paso 1: Revisa tu bandeja de entrada
+                          </p>
+                        </div>
+                      </div>
+                      <div className="rounded-2xl border border-white/15 bg-[#2a2a2a]/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-[#00e38e] text-[#00e38e] text-sm font-bold">
+                            2
+                          </div>
+                          <p className="text-sm text-white">
+                            Paso 2: Revisa tu bandeja de{" "}
+                            <span className="font-semibold text-[#00e38e]">
+                              Spam
+                            </span>{" "}
+                            o{" "}
+                            <span className="font-semibold text-[#00e38e]">
+                              Promociones
+                            </span>
+                            .
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <button
-                    onClick={handleClose}
-                    className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-semibold text-[#191919] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.4)] active:scale-[0.98]"
+                  <a
+                    href="https://www.youtube.com/watch?v=lA_RK0ABM8I"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-bold text-[#0f0f0f] shadow-[0_12px_30px_rgba(0,227,142,0.35)] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.45)] active:scale-[0.98] text-center"
                   >
-                    Cerrar
-                  </button>
+                    👉 Descubre cómo Condaty cobra por ti.
+                  </a>
                 </div>
               ) : (
                 <div className="flex flex-col gap-6">
@@ -361,17 +401,18 @@ export default function DownloadModal({
               )}
             </div>
 
-            {/* Right Image */}
-            <div className="relative w-full md:w-[400px] h-[250px] md:h-auto order-1 md:order-2 bg-[#0f2b22]">
-              <Image
-                src="/images/condominios/ebook-new.png"
-                alt="Plantillas de cobranza"
-                fill
-                className="object-cover"
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#191919] via-transparent to-transparent md:bg-gradient-to-r md:from-[#191919] md:via-transparent md:to-[#191919]" />
-            </div>
+            {!isSuccess && (
+              <div className="relative w-full md:w-[400px] h-[250px] md:h-auto order-1 md:order-2 bg-[#0f2b22]">
+                <Image
+                  src="/images/condominios/ebook-new.png"
+                  alt="Plantillas de cobranza"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#191919] via-transparent to-transparent md:bg-gradient-to-r md:from-[#191919] md:via-transparent md:to-[#191919]" />
+              </div>
+            )}
           </motion.div>
         </div>
       )}

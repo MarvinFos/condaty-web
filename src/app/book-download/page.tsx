@@ -61,12 +61,20 @@ export default function BookDownloadPage() {
     setIsSubmitting1(true);
 
     try {
+      // Get device info
+      const deviceInfo =
+        typeof window !== "undefined" ? navigator.userAgent : "Unknown";
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData1, source: "book-download" }),
+        body: JSON.stringify({
+          ...formData1,
+          source: "book-download",
+          deviceInfo,
+        }),
       });
 
       const data = await response.json();
@@ -258,34 +266,63 @@ export default function BookDownloadPage() {
   );
 
   const renderSuccess = (setIsSuccess: (v: boolean) => void) => (
-    <div className="flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[400px]">
-      <motion.div
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{
-          type: "spring",
-          duration: 0.8,
-          bounce: 0.5,
-        }}
-        className="rounded-full bg-[#00e38e]/10 p-6"
-      >
-        <CheckCircle2 size={64} className="text-[#00e38e]" />
-      </motion.div>
-      <div className="flex flex-col gap-2">
-        <h2 className="text-[28px] font-semibold text-white">
-          ¡Listo! Revisa tu correo
-        </h2>
-        <p className="text-[16px] text-gray-400">
-          Te enviamos el enlace del kit a tu email. Si no lo ves, revisa spam o
-          promociones.
-        </p>
+    <div className="relative flex flex-col items-center gap-6 py-8 text-center h-full justify-center min-h-[400px] overflow-hidden rounded-2xl">
+      <div className="absolute inset-0 bg-[url('/images/condaty-edif.png')] bg-cover bg-center opacity-40" />
+      <div className="absolute inset-0 bg-[#111111]/80" />
+      <div className="relative z-10 flex flex-col items-center gap-6 w-full">
+        <motion.div
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{
+            type: "spring",
+            duration: 0.8,
+            bounce: 0.5,
+          }}
+          className="rounded-full bg-[#00e38e]/20 p-6 shadow-[0_0_30px_rgba(0,227,142,0.25)]"
+        >
+          <CheckCircle2 size={64} className="text-[#00e38e]" />
+        </motion.div>
+        <div className="flex flex-col gap-5 w-full">
+          <h2 className="text-[28px] font-bold text-white leading-tight">
+            ¡Excelente! Tu Kit está en camino.
+          </h2>
+          <div className="flex flex-col gap-4 text-left">
+            <div className="rounded-2xl border border-white/15 bg-[#2a2a2a]/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-[#00e38e] text-[#00e38e] text-sm font-bold">
+                  1
+                </div>
+                <p className="text-sm text-white">
+                  Paso 1: Revisa tu bandeja de entrada
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-[#2a2a2a]/90 px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full border border-[#00e38e] text-[#00e38e] text-sm font-bold">
+                  2
+                </div>
+                <p className="text-sm text-white">
+                  Paso 2: Revisa tu bandeja de{" "}
+                  <span className="font-semibold text-[#00e38e]">Spam</span> o{" "}
+                  <span className="font-semibold text-[#00e38e]">
+                    Promociones
+                  </span>
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://www.youtube.com/watch?v=lA_RK0ABM8I"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-bold text-[#0f0f0f] shadow-[0_12px_30px_rgba(0,227,142,0.35)] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.45)] active:scale-[0.98] text-center"
+        >
+          👉 Descubre cómo Condaty cobra por ti.
+        </a>
       </div>
-      <button
-        onClick={() => setIsSuccess(false)}
-        className="mt-4 w-full rounded-2xl bg-[#00e38e] py-4 text-base font-semibold text-[#191919] transition-all hover:bg-[#00c97e] hover:shadow-[0_0_30px_rgba(0,227,142,0.4)] active:scale-[0.98]"
-      >
-        Descargar otro recurso
-      </button>
     </div>
   );
 
