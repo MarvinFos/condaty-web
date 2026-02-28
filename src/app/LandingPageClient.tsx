@@ -36,7 +36,11 @@ import {
 import { useModal } from "@/context/ModalContext";
 
 export default function LandingPageClient() {
-  const { openContactModal, openDownloadModal } = useModal();
+  const { openDownloadModal } = useModal();
+  const whatsappMessage = "Hola, quiero más información de Condaty.";
+  const whatsappLink = `https://wa.me/59178593485?text=${encodeURIComponent(
+    whatsappMessage,
+  )}`;
 
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
@@ -140,32 +144,44 @@ export default function LandingPageClient() {
                 </span>
               </div>
               <div className="flex gap-4">
-                <button
-                  onClick={() => openContactModal("contact")}
-                  className="relative z-50 rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors shadow-[0_0_20px_rgba(0,227,142,0.4)]"
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-50 inline-flex items-center gap-3 rounded-full border-2 border-[#00e38e] bg-white px-6 py-3 text-[#0f172a] shadow-[0_0_20px_rgba(0,227,142,0.35)] transition-all hover:bg-white/90 hover:shadow-[0_0_30px_rgba(0,227,142,0.45)]"
                 >
-                  <span className="text-[16px] font-semibold text-[#191919]">
-                    Contáctanos
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2C6.486 2 2 6.262 2 11.5c0 1.97.628 3.79 1.698 5.29L2 22l5.45-1.59A10.49 10.49 0 0 0 12 21c5.514 0 10-4.262 10-9.5S17.514 2 12 2Z"
+                      fill="#25D366"
+                    />
+                    <path
+                      d="M16.93 13.57c-.23-.12-1.36-.67-1.57-.74-.21-.08-.37-.12-.52.12-.15.23-.6.74-.73.9-.13.15-.27.17-.5.06-.23-.12-.98-.36-1.86-1.16-.69-.62-1.15-1.39-1.29-1.62-.13-.23-.01-.35.1-.47.1-.1.23-.27.35-.4.12-.13.15-.23.23-.38.08-.15.04-.29-.02-.41-.06-.12-.52-1.26-.72-1.73-.19-.46-.38-.4-.52-.4h-.44c-.15 0-.4.06-.6.29-.21.23-.78.76-.78 1.85 0 1.09.8 2.14.91 2.29.12.15 1.58 2.4 3.83 3.37.54.23.96.37 1.29.47.54.17 1.03.15 1.42.09.43-.06 1.36-.55 1.55-1.09.19-.53.19-.99.13-1.09-.06-.1-.21-.16-.44-.28Z"
+                      fill="#FFFFFF"
+                    />
+                  </svg>
+                  <span className="text-[16px] font-semibold">
+                    ¿Quieres información? Escríbenos
                   </span>
-                </button>
+                </a>
               </div>
             </div>
 
             <div className="relative mt-12 flex w-full items-end justify-center sm:mt-20">
-              <div
-                className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[350px] rounded-[800px] opacity-100 blur-[50px] pointer-events-none z-0 mix-blend-screen"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
-                }}
-              />
-              <div
-                className="absolute left-1/2 top-[-40%] -translate-x-1/2 -translate-y-1/2 w-[150px] h-[900px] rounded-[800px] opacity-100 blur-[70px] pointer-events-none z-0 mix-blend-screen"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(255,255,255,1) 0%, #00e38e 50%, rgba(0,227,142,0) 100%)",
-                }}
-              />
+              <div className="absolute inset-0 pointer-events-none z-0">
+                <div className="absolute left-[18%] top-[40%] h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/45 blur-[90px]" />
+                <div className="absolute right-[18%] top-[40%] h-[320px] w-[320px] translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/45 blur-[90px]" />
+                <div className="absolute left-1/2 top-[40%] h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/35 blur-[140px]" />
+                <div className="absolute left-[18%] top-[60%] h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/25 blur-[110px]" />
+                <div className="absolute right-[18%] top-[60%] h-[260px] w-[260px] translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/25 blur-[110px]" />
+                <div className="absolute left-1/2 top-[60%] h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#7fffd4]/15 blur-[150px]" />
+              </div>
 
               <div className="relative z-10 -mr-[80px] mb-4 w-[25%] max-w-[220px] sm:mb-8 opacity-90 hover:opacity-100 transition-opacity">
                 <Image
@@ -548,14 +564,32 @@ export default function LandingPageClient() {
                   lugar.
                 </span>
               </div>
-              <button
-                onClick={() => openContactModal("contact")}
-                className="rounded-full border border-[#00e38e] bg-[#00e38e] px-8 py-4 cursor-pointer hover:bg-[#00c97e] transition-colors"
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-full border-2 border-[#00e38e] bg-white/80 px-6 py-3 text-[#0f172a] shadow-[0_0_20px_rgba(0,227,142,0.35)] transition-all hover:shadow-[0_0_30px_rgba(0,227,142,0.45)]"
               >
-                <span className="text-[16px] font-semibold text-[#191919]">
-                  Contáctanos
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2C6.486 2 2 6.262 2 11.5c0 1.97.628 3.79 1.698 5.29L2 22l5.45-1.59A10.49 10.49 0 0 0 12 21c5.514 0 10-4.262 10-9.5S17.514 2 12 2Z"
+                    fill="#25D366"
+                  />
+                  <path
+                    d="M16.93 13.57c-.23-.12-1.36-.67-1.57-.74-.21-.08-.37-.12-.52.12-.15.23-.6.74-.73.9-.13.15-.27.17-.5.06-.23-.12-.98-.36-1.86-1.16-.69-.62-1.15-1.39-1.29-1.62-.13-.23-.01-.35.1-.47.1-.1.23-.27.35-.4.12-.13.15-.23.23-.38.08-.15.04-.29-.02-.41-.06-.12-.52-1.26-.72-1.73-.19-.46-.38-.4-.52-.4h-.44c-.15 0-.4.06-.6.29-.21.23-.78.76-.78 1.85 0 1.09.8 2.14.91 2.29.12.15 1.58 2.4 3.83 3.37.54.23.96.37 1.29.47.54.17 1.03.15 1.42.09.43-.06 1.36-.55 1.55-1.09.19-.53.19-.99.13-1.09-.06-.1-.21-.16-.44-.28Z"
+                    fill="#FFFFFF"
+                  />
+                </svg>
+                <span className="text-[16px] font-semibold">
+                  ¿Quieres información? Escríbenos
                 </span>
-              </button>
+              </a>
             </div>
             <div className="flex flex-1 justify-center relative">
               <Image
