@@ -5,11 +5,10 @@ import { ModalProvider } from "@/context/ModalContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.condaty.com"),
   title: {
-    default: "Condaty | Software de gestión de condominios",
+    default: "Condaty - Software para la gestión de condominios",
     template: "%s | Condaty",
   },
-  description:
-    "Plataforma para administración de condominios: pagos, accesos, comunicación y reportes en tiempo real.",
+  description: "Condaty - Software para la gestión de condominios",
   keywords: [
     "gestión de condominios",
     "administración de condominios",
@@ -19,29 +18,22 @@ export const metadata: Metadata = {
     "condaty",
   ],
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: [{ url: "/images/favicon-condaty.png", type: "image/png" }],
+    apple: [{ url: "/images/favicon-condaty.png", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Condaty | Software de gestión de condominios",
-    description:
-      "Plataforma para administración de condominios con pagos, accesos y reportes en tiempo real.",
+    title: "Condaty - Software para la gestión de condominios",
+    description: "Condaty - Software para la gestión de condominios",
     type: "website",
     locale: "es_ES",
     url: "https://www.condaty.com",
     images: [
       {
-        url: "/images/condominios/condominio-ilustracion2.jpg",
+        url: "/images/condaty-logo-preview.png",
         width: 1200,
         height: 630,
-        alt: "Condaty - Gestión de condominios",
+        alt: "Condaty - Software para la gestión de condominios",
       },
     ],
   },
