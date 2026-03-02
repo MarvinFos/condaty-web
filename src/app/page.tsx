@@ -2,13 +2,19 @@ import type { Metadata } from "next";
 import LandingPageClient from "./LandingPageClient";
 
 export const metadata: Metadata = {
-  title: "Condaty | Recursos Gratuitos para Condominios",
-  description:
-    "Explora y descarga recursos gratuitos para la gestión de tu comunidad y condominios.",
+  title: "Condaty - Software para la gestión de condominios",
+  description: "Condaty - Software para la gestión de condominios",
   openGraph: {
-    title: "Condaty | Recursos Gratuitos para Condominios",
-    description:
-      "Explora y descarga recursos gratuitos para la gestión de tu comunidad y condominios.",
+    title: "Condaty - Software para la gestión de condominios",
+    description: "Condaty - Software para la gestión de condominios",
+    images: [
+      {
+        url: "/images/condaty-logo-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Condaty - Software para la gestión de condominios",
+      },
+    ],
   },
 };
 
