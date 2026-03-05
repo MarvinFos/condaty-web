@@ -5,10 +5,10 @@ import { ModalProvider } from "@/context/ModalContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.condaty.com"),
   title: {
-    default: "Condaty - Software para la gestión de condominios",
+    default: "Condaty - Software de administración de condominios",
     template: "%s | Condaty",
   },
-  description: "Condaty - Software para la gestión de condominios",
+  description: "Condaty - Software de administración de condominios",
   keywords: [
     "gestión de condominios",
     "administración de condominios",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Condaty - Software para la gestión de condominios",
-    description: "Condaty - Software para la gestión de condominios",
+    title: "Condaty - Software de administración de condominios",
+    description: "Condaty - Software de administración de condominios",
     type: "website",
     locale: "es_ES",
     url: "https://www.condaty.com",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "/images/condaty-logo-preview.png",
         width: 1200,
         height: 630,
-        alt: "Condaty - Software para la gestión de condominios",
+        alt: "Condaty - Software de administración de condominios",
       },
     ],
   },
